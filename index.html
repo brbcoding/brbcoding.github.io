@@ -340,90 +340,9 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/">SublimeText 2 Keybindings Cheatsheet</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-12T15:00:38-04:00" pubdate data-updated="true">May 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Migrating this post from my old blog&hellip; These keybindings are still relevant though.</p>
-
-<h3>General</h3>
-
-
-
-
-<h4>Files</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>Shift</code> + <code>n</code> &ndash; New Window<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>w</code> &ndash; Close Window<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>t</code> &ndash; Reopen Last File<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>s</code> &ndash; Save File As Prompt<br/>
-<code>Ctrl</code> + <code>w</code> &ndash; Close Current File<br/>
-<code>Ctrl</code> + <code>o</code> &ndash; Open File Prompt<br/>
-<code>Ctrl</code> + <code>n</code> &ndash; New File<br/>
-<code>Ctrl</code> + <code>s</code> &ndash; Save</p>
-
-
-
-
-<h4>Views</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>k</code> + <code>b</code> &ndash; Toggle Sidebar<br/>
-<code>F11</code> &ndash; Toggle Fullscreen<br/>
-<code>Shift</code> + <code>F11</code> &ndash; Toggle Distraction Free<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>p</code> &ndash; Command Prompt<br/>
-<code>Alt</code> + <code>Shift</code> + <code>2</code> &ndash; Split View into Two Columns<br/>
-<code>Alt</code> + <code>Shift</code> + <code>1</code> &ndash; Revert to One Column<br/>
-<code>Alt</code> + <code>Shift</code> + <code>5</code> &ndash; Set to Grid View<br/>
-<code>Ctrl</code> + <code>[NUM]</code> &ndash; Jump to Group Where <code>[NUM]</code> is 1-4<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>[NUM]</code>  &ndash; Move File to Specified Group Where <code>[NUM]</code> is 1-4</p>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -454,6 +373,35 @@
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/brbcoding">@brbcoding</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brbcoding',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
 
 
 
@@ -474,6 +422,15 @@
   
 
 
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
 
