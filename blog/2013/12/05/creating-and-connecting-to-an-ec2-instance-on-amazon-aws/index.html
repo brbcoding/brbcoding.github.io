@@ -1,27 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Cody G. Henshaw]]></title>
-  <link href="http://brbcoding.github.io/atom.xml" rel="self"/>
-  <link href="http://brbcoding.github.io/"/>
-  <updated>2013-12-05T14:05:09-05:00</updated>
-  <id>http://brbcoding.github.io/</id>
-  <author>
-    <name><![CDATA[Cody G. Henshaw]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Creating and connecting to an EC2 instance on Amazon AWS - Cody G. Henshaw</title>
+  <meta name="author" content="Cody G. Henshaw">
 
   
-  <entry>
+  <meta name="description" content="Prerequisites: Amazon Web Services (AWS) Account
+SSH (I will be using Cygwin w/ SSH) Creating a new AWS EC2 Instance At this point, I will assume &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Cody G. Henshaw" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+	<div class="header-title"><a href="/">Cody G. Henshaw</a></div>
+
+
+	<br><div class="header-subtitle">Hacking on the WWW</div>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brbcoding.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+  
     
-    <title type="html"><![CDATA[Creating and connecting to an EC2 instance on Amazon AWS]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/"/>
+      <h1 class="entry-title">Creating and Connecting to an EC2 Instance on Amazon AWS</h1>
     
-    <updated>2013-12-05T14:04:26-05:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws</id>
+  
     
-    <content type="html"><![CDATA[<h3>Prerequisites:</h3>
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T14:04:26-05:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>Prerequisites:</h3>
 
 
 
@@ -346,205 +420,110 @@
 
 <p><strong>Looks like we&rsquo;ve connected successfully! Congratulations, and welcome to the cloud. Ask your questions in the comments or feel free to connect with me @CodyHenshaw on twitter. Thanks for stopping by!</strong></p>
 
-]]></content>
-    
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    
-    <title type="html"><![CDATA[SublimeText 2 Keybindings Cheatsheet]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/"/>
-    
-    <updated>2013-12-05T14:00:38-05:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet</id>
-    
-    <content type="html"><![CDATA[<p>Migrating this post from my old blog&hellip; These keybindings are still relevant though.</p>
 
-<h3>General</h3>
+<span class="byline author vcard">Posted by <span class="fn">Cody G. Henshaw</span></span>
 
+      
 
 
 
-<h4>Files</h4>
 
 
 
 
-<p><code>Ctrl</code> + <code>Shift</code> + <code>n</code> &ndash; New Window<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>w</code> &ndash; Close Window<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>t</code> &ndash; Reopen Last File<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>s</code> &ndash; Save File As Prompt<br/>
-<code>Ctrl</code> + <code>w</code> &ndash; Close Current File<br/>
-<code>Ctrl</code> + <code>o</code> &ndash; Open File Prompt<br/>
-<code>Ctrl</code> + <code>n</code> &ndash; New File<br/>
-<code>Ctrl</code> + <code>s</code> &ndash; Save</p>
 
-
-
-
-<h4>Views</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>k</code> + <code>b</code> &ndash; Toggle Sidebar<br/>
-<code>F11</code> &ndash; Toggle Fullscreen<br/>
-<code>Shift</code> + <code>F11</code> &ndash; Toggle Distraction Free<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>p</code> &ndash; Command Prompt<br/>
-<code>Alt</code> + <code>Shift</code> + <code>2</code> &ndash; Split View into Two Columns<br/>
-<code>Alt</code> + <code>Shift</code> + <code>1</code> &ndash; Revert to One Column<br/>
-<code>Alt</code> + <code>Shift</code> + <code>5</code> &ndash; Set to Grid View<br/>
-<code>Ctrl</code> + <code>[NUM]</code> &ndash; Jump to Group Where <code>[NUM]</code> is 1-4<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>[NUM]</code>  &ndash; Move File to Specified Group Where <code>[NUM]</code> is 1-4</p>
-
-
-
-
-<!-- more -->
-
-
-
-
-<h4>Editing</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>a</code> &ndash; Select All<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>m</code> &ndash; Select All Content in Current Parentheses<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>d</code> &ndash; Duplicate Lines<br/>
-<code>Ctrl</code> + <code>m</code> &ndash; Jump to Closing Parenthesis<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>l</code> &ndash; Split Selection to Lines<br/>
-<code>Ctrl</code> + <code>d</code> &ndash; Select Word; Repeat for Next Occurences<br/>
-<code>Backspace</code> or <code>Shift</code> + <code>Backspace</code> or <code>Ctrl</code> + <code>Shift</code> + <code>Backspace</code> &ndash; Left Delete<br/>
-<code>Delete</code> &ndash; Right Delete<br/>
-<code>Enter</code> or <code>Shift</code> + <code>Enter</code> &ndash; Insert Newline<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>Enter</code> &ndash; Insert Newline After<br/>
-<code>Ctrl</code> + <code>j</code> &ndash; Join Line Below to End of Current Line<br/>
-<code>Ctrl</code> + <code>]</code> &ndash; Indent Lines<br/>
-<code>Ctrl</code> + <code>[</code> &ndash; De-indent Lines<br/>
-<code>Ctrl</code> + <code>z</code> &ndash; Undo<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>z</code> or <code>Ctrl</code> + <code>y</code> &ndash; Redo<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>v</code> &ndash; Paste and Indent<br/>
-<code>Shift</code> + <code>Delete</code> or <code>Ctrl</code> + <code>x</code> &ndash; Cut<br/>
-<code>Ctrl</code> + <code>Insert</code> or <code>Ctrl</code> + <code>c</code> &ndash; Copy<br/>
-<code>Shift</code> + <code>Insert</code> or <code>Ctrl</code> + <code>v</code> &ndash; Paste<br/>
-<code>Ctrl</code> + <code>k</code> + <code>k</code> or <code>Ctrl</code> + <code>x</code> &ndash; Delete from Cursor to EOL<br/>
-<code>Ctrl</code> + <code>k</code> + <code>Backspace</code> &ndash; Delete from Cursor to BOL<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>Up OR Down</code> &ndash; Move Selected Up or Down<br/>
-<code>Ctrl</code> + <code>Space</code> &ndash; Select Next Auto-Complete Suggestion<br/>
-<code>Ctrl</code> + <code>k</code> + <code>u</code> &ndash; Transform to Uppercase<br/>
-<code>Ctrl</code> + <code>k</code> + <code>l</code> &ndash; Transform to Lowercase</p>
-
-
-
-
-<h4>Navigation</h4>
-
-
-
-
-<p><code>Left</code> or <code>Shift</code> + <code>Left</code> &ndash; Move Left (By Characters)<br/>
-<code>Right</code> or <code>Shift</code> + <code>Right</code> &ndash; Move Right (By Characters)<br/>
-<code>Up</code> or <code>Shift</code> + <code>Up</code> &ndash; Move Up (By Lines)<br/>
-<code>Down</code> or <code>Shift</code> + <code>Down</code> &ndash; Move Down (By Lines)<br/>
-<code>Ctrl</code> + <code>Left</code>  or <code>Ctrl</code> + <code>Shift</code> + <code>Left</code>  &ndash; Move Left (By Words)<br/>
-<code>Ctrl</code> + <code>Right</code> or <code>Ctrl</code> + <code>Shift</code> + <code>Right</code> &ndash; Move Right (By Word Ends)<br/>
-<code>Alt</code> + <code>Left</code> or <code>Alt</code> + <code>Shift</code> + <code>Left</code> &ndash; Move Left (By Subwords)<br/>
-<code>Alt</code> + <code>Right</code> or <code>Alt</code> + <code>Shift</code> + <code>Right</code> &ndash; Move Right (By Subword Ends)<br/>
-<code>Page Up</code> or <code>Shift</code> + <code>Page Up</code> &ndash; Next Page<br/>
-<code>Page Down</code> or <code>Shift</code> + <code>Page Down</code> &ndash; Previous Page<br/>
-<code>Home</code> or <code>Shift</code> + <code>Home</code> &ndash; Move to Beginning of Line<br/>
-<code>End</code> or <code>Shift</code> + <code>End</code> &ndash; Move to End of Line<br/>
-<code>Ctrl</code> + <code>Home</code> or <code>Ctrl</code> + <code>Shift</code> + <code>Home</code> &ndash;  Move to Beginning of File<br/>
-<code>Ctrl</code> + <code>End</code> or <code>Ctrl</code> + <code>Shift</code> + <code>End</code> &ndash; Move to End of File</p>
-
-
-
-
-<h4>Goto</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>p</code> &ndash; Quick Open Files by Name<br/>
-<code>Ctrl</code> + <code>r</code> &ndash; Goto Symbol<br/>
-<code>Ctrl</code> + <code>;</code> &ndash; Goto Word in Current File<br/>
-<code>Ctrl</code> + <code>g</code> &ndash; Goto Line in Current File</p>
-
-
-
-
-<h4>Find and Replace</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>f</code> &ndash; Open Find Menu<br/>
-<code>Ctrl</code> + <code>h</code> &ndash; Open Find and Replace Menu<br/>
-<code>Alt</code> + <code>r</code> &ndash; Toggle Regular Expression<br/>
-<code>Alt</code> + <code>c</code> &ndash; Toggle Case Sensitive<br/>
-<code>Alt</code> + <code>w</code> &ndash; Toggle Whole Word<br/>
-<code>Alt</code> + <code>a</code> &ndash; Toggle Preserve Case<br/>
-<code>F3</code> &ndash; Find<br/>
-<code>Alt</code> + <code>Enter</code> &ndash; Find All<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>f</code> &ndash; Find in Files<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>a</code> &ndash; Replace<br/>
-<code>Ctrl</code> + <code>Alt</code> + <code>Enter</code> &ndash; Replace All</p>
-
-
-
-
-<h4>Tabs</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>Shift</code> + <code>t</code> &ndash; Open Last Closed Tab<br/>
-<code>Ctrl</code> + <code>Page Up</code> &ndash; Cycle Up Through Tabs<br/>
-<code>Ctrl</code> + <code>Page Down</code> &ndash; Cycle Down Through Tabs</p>
-
-
-
-
-<h4>Bookmarks</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>F2</code> &ndash; Toggle Bookmark<br/>
-<code>F2</code> &ndash; Next Bookmark<br/>
-<code>Shift</code> + <code>F2</code> &ndash; Previous Bookmark<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>F2</code> &ndash; Clear Bookmarks</p>
-
-
-
-
-<h4>Comments</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>/</code> &ndash; Comment/Un-Comment a Line<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>/</code> &ndash; Block Comment Selection</p>
-
-
-
-
-<h3>Plugin Specific</h3>
-
-
-
-
-<h4>Zen Coding/Emmet</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>Alt</code> + <code>Enter</code> &ndash; Open Live Editor</p>
-
-]]></content>
-    
-  </entry>
   
-</feed>
+
+
+<time datetime="2013-12-05T14:04:26-05:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/" data-via="" data-counturl="http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/" title="Previous Post: SublimeText 2 Keybindings Cheatsheet">&laquo; SublimeText 2 Keybindings Cheatsheet</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/">SublimeText 2 Keybindings Cheatsheet</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 -  Cody G. Henshaw <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
