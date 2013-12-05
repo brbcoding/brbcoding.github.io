@@ -4,7 +4,7 @@
   <title><![CDATA[Cody G. Henshaw]]></title>
   <link href="http://brbcoding.github.io/atom.xml" rel="self"/>
   <link href="http://brbcoding.github.io/"/>
-  <updated>2013-12-05T14:10:42-05:00</updated>
+  <updated>2013-12-05T14:12:07-05:00</updated>
   <id>http://brbcoding.github.io/</id>
   <author>
     <name><![CDATA[Cody G. Henshaw]]></name>
@@ -70,10 +70,10 @@
   <entry>
     
     <title type="html"><![CDATA[Creating and connecting to an EC2 instance on Amazon AWS]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/"/>
+    <link href="http://brbcoding.github.io/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/"/>
     
-    <updated>2013-12-05T14:04:26-05:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws</id>
+    <updated>2013-08-08T15:04:26-04:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws</id>
     
     <content type="html"><![CDATA[<h3>Prerequisites:</h3>
 
@@ -406,11 +406,86 @@
   
   <entry>
     
-    <title type="html"><![CDATA[SublimeText 2 Keybindings Cheatsheet]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/"/>
+    <title type="html"><![CDATA[pinflickr - some kind of wordpress pinboard plugin]]></title>
+    <link href="http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/"/>
     
-    <updated>2013-12-05T14:00:38-05:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet</id>
+    <updated>2013-08-05T15:09:27-04:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin</id>
+    
+    <content type="html"><![CDATA[<p>I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a paste of the Readme file located in the git repo. Full write-up coming soon.</p>
+
+
+
+
+<p><a href="https://github.com/brbcoding/pinflickr/tree/master/wp-pinflickr">Full Source on Github</a></p>
+
+
+
+
+<p>This plugin uses the Flickr API to build a pinboard style gallery on an existing Wordpress site.</p>
+
+
+
+
+<p>Examples:</p>
+
+
+
+
+<p><img src="http://i.imgur.com/DxAHfvp.jpg" alt="Screenshot 1" />
+<img src="http://i.imgur.com/vzB3ljs.jpg" alt="Screenshot 2" /></p>
+
+
+
+
+<h1>Installation</h1>
+
+
+
+
+<ul>
+<li>Move wp-pinflickr folder to the <code>plugins</code> directory of your Wordpress site.</li>
+<li>Create a new API code and app secret on flickr <a href="http://www.flickr.com/services/developer/api/">More Info</a></li>
+<li>Access <em>Pinflickr Settings</em> under the <em>Settings</em> menu inside the Wordpress Admin Menu.</li>
+<li>Enter your API code and App Secret from Flickr. Save these changes.</li>
+<li>Create a new page that will hold your gallery</li>
+<li>The plugin works with a shortcode to display the gallery. The format is as follows:</li>
+</ul>
+
+
+
+
+<p><code>[pinflickr user_id="66956608@N06" tags="tags,separated,by,commas"]</code></p>
+
+
+
+
+<p>The easiest way to find a user id is by using the site <a href="http://idgettr.com/">idGettr</a>.</p>
+
+
+
+
+<ul>
+<li>Enter the shortcode with your <code>user_id</code> and desired <code>tags</code> and save this page.</li>
+<li>That&rsquo;s it! You&rsquo;ve created an awesome pinboard styled gallery!</li>
+</ul>
+
+
+
+
+<p><em>Working Demo Coming Soon</em></p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+    <title type="html"><![CDATA[SublimeText 2 Keybindings Cheatsheet]]></title>
+    <link href="http://brbcoding.github.io/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/"/>
+    
+    <updated>2013-05-12T15:00:38-04:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet</id>
     
     <content type="html"><![CDATA[<p>Migrating this post from my old blog&hellip; These keybindings are still relevant though.</p>
 
@@ -596,81 +671,6 @@
 
 
 <p><code>Ctrl</code> + <code>Alt</code> + <code>Enter</code> &ndash; Open Live Editor</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-    <title type="html"><![CDATA[pinflickr - some kind of wordpress pinboard plugin]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/"/>
-    
-    <updated>2013-08-05T15:09:27-04:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin</id>
-    
-    <content type="html"><![CDATA[<p>I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a paste of the Readme file located in the git repo. Full write-up coming soon.</p>
-
-
-
-
-<p><a href="https://github.com/brbcoding/pinflickr/tree/master/wp-pinflickr">Full Source on Github</a></p>
-
-
-
-
-<p>This plugin uses the Flickr API to build a pinboard style gallery on an existing Wordpress site.</p>
-
-
-
-
-<p>Examples:</p>
-
-
-
-
-<p><img src="http://i.imgur.com/DxAHfvp.jpg" alt="Screenshot 1" />
-<img src="http://i.imgur.com/vzB3ljs.jpg" alt="Screenshot 2" /></p>
-
-
-
-
-<h1>Installation</h1>
-
-
-
-
-<ul>
-<li>Move wp-pinflickr folder to the <code>plugins</code> directory of your Wordpress site.</li>
-<li>Create a new API code and app secret on flickr <a href="http://www.flickr.com/services/developer/api/">More Info</a></li>
-<li>Access <em>Pinflickr Settings</em> under the <em>Settings</em> menu inside the Wordpress Admin Menu.</li>
-<li>Enter your API code and App Secret from Flickr. Save these changes.</li>
-<li>Create a new page that will hold your gallery</li>
-<li>The plugin works with a shortcode to display the gallery. The format is as follows:</li>
-</ul>
-
-
-
-
-<p><code>[pinflickr user_id="66956608@N06" tags="tags,separated,by,commas"]</code></p>
-
-
-
-
-<p>The easiest way to find a user id is by using the site <a href="http://idgettr.com/">idGettr</a>.</p>
-
-
-
-
-<ul>
-<li>Enter the shortcode with your <code>user_id</code> and desired <code>tags</code> and save this page.</li>
-<li>That&rsquo;s it! You&rsquo;ve created an awesome pinboard styled gallery!</li>
-</ul>
-
-
-
-
-<p><em>Working Demo Coming Soon</em></p>
 
 ]]></content>
     

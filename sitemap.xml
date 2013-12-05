@@ -2,21 +2,21 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
+            http://brbcoding.github.io/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/
+        </loc>
+        <lastmod>2013-12-05T14:11:57-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
             http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/
         </loc>
         <lastmod>2013-12-05T14:10:36-05:00</lastmod>
     </url>
     <url>
         <loc>
-            http://brbcoding.github.io/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/
+            http://brbcoding.github.io/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/
         </loc>
-        <lastmod>2013-12-05T14:01:55-05:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://brbcoding.github.io/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/
-        </loc>
-        <lastmod>2013-12-05T14:05:02-05:00</lastmod>
+        <lastmod>2013-12-05T14:11:39-05:00</lastmod>
     </url>
     <url>
         <loc>
@@ -26,11 +26,11 @@
     </url>
     <url>
         <loc>http://brbcoding.github.io/blog/archives/</loc>
-        <lastmod>2013-12-05T14:10:36-05:00</lastmod>
+        <lastmod>2013-12-05T14:11:57-05:00</lastmod>
     </url>
     <url>
         <loc>http://brbcoding.github.io/</loc>
-        <lastmod>2013-12-05T14:10:36-05:00</lastmod>
+        <lastmod>2013-12-05T14:11:57-05:00</lastmod>
     </url>
     <url>
         <loc>http://brbcoding.github.io/robots.txt</loc>
