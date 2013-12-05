@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://brbcoding.github.io/sitemap.xml 
