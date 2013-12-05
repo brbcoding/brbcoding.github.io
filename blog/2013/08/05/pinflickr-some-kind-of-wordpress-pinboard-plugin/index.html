@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Cody G. Henshaw</title>
+  <title>pinflickr - some kind of wordpress pinboard plugin - Cody G. Henshaw</title>
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="Blog Archive 2013 Icon fonts and pseudo-elements: A love story
-December 05 2013 Creating and connecting to an EC2 instance on Amazon AWS
-December 05 &hellip;">
+  <meta name="description" content="I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ December 05 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://brbcoding.github.io/blog/archives">
+  <link rel="canonical" href="http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Cody G. Henshaw" type="application/atom+xml">
@@ -67,57 +65,148 @@ December 05 &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+  
+    
+      <h1 class="entry-title">Pinflickr - Some Kind of Wordpress Pinboard Plugin</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-05T15:09:27-04:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
+
+
+<div class="entry-content"><p>I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a paste of the Readme file located in the git repo. Full write-up coming soon.</p>
 
 
 
-  
-  <h2>2013</h2>
 
-<article>
-  
-<h1><a href="/blog/2013/12/05/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: A love story</a></h1>
-<time datetime="2013-12-05T14:07:21-05:00" pubdate><span class='month'>December</span> <span class='day'>05</span> <span class='year'>2013</span></time>
-
-</article>
+<p><a href="https://github.com/brbcoding/pinflickr/tree/master/wp-pinflickr">Full Source on Github</a></p>
 
 
 
-<article>
-  
-<h1><a href="/blog/2013/12/05/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a></h1>
-<time datetime="2013-12-05T14:04:26-05:00" pubdate><span class='month'>December</span> <span class='day'>05</span> <span class='year'>2013</span></time>
 
-</article>
+<p>This plugin uses the Flickr API to build a pinboard style gallery on an existing Wordpress site.</p>
 
 
 
-<article>
-  
-<h1><a href="/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/">SublimeText 2 Keybindings Cheatsheet</a></h1>
-<time datetime="2013-12-05T14:00:38-05:00" pubdate><span class='month'>December</span> <span class='day'>05</span> <span class='year'>2013</span></time>
 
-</article>
+<p>Examples:</p>
 
 
 
-<article>
-  
-<h1><a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">pinflickr - some kind of wordpress pinboard plugin</a></h1>
-<time datetime="2013-08-05T15:09:27-04:00" pubdate><span class='month'>August</span> <span class='day'>05</span> <span class='year'>2013</span></time>
 
-</article>
+<p><img src="http://i.imgur.com/DxAHfvp.jpg" alt="Screenshot 1" />
+<img src="http://i.imgur.com/vzB3ljs.jpg" alt="Screenshot 2" /></p>
+
+
+
+
+<h1>Installation</h1>
+
+
+
+
+<ul>
+<li>Move wp-pinflickr folder to the <code>plugins</code> directory of your Wordpress site.</li>
+<li>Create a new API code and app secret on flickr <a href="http://www.flickr.com/services/developer/api/">More Info</a></li>
+<li>Access <em>Pinflickr Settings</em> under the <em>Settings</em> menu inside the Wordpress Admin Menu.</li>
+<li>Enter your API code and App Secret from Flickr. Save these changes.</li>
+<li>Create a new page that will hold your gallery</li>
+<li>The plugin works with a shortcode to display the gallery. The format is as follows:</li>
+</ul>
+
+
+
+
+<p><code>[pinflickr user_id="66956608@N06" tags="tags,separated,by,commas"]</code></p>
+
+
+
+
+<p>The easiest way to find a user id is by using the site <a href="http://idgettr.com/">idGettr</a>.</p>
+
+
+
+
+<ul>
+<li>Enter the shortcode with your <code>user_id</code> and desired <code>tags</code> and save this page.</li>
+<li>That&rsquo;s it! You&rsquo;ve created an awesome pinboard styled gallery!</li>
+</ul>
+
+
+
+
+<p><em>Working Demo Coming Soon</em></p>
 
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Cody G. Henshaw</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-05T15:09:27-04:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/flickr/'>flickr</a>, <a class='category' href='/blog/categories/php/'>php</a>, <a class='category' href='/blog/categories/wordpress/'>wordpress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/" data-via="" data-counturl="http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/" title="Next Post: SublimeText 2 Keybindings Cheatsheet">SublimeText 2 Keybindings Cheatsheet &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>

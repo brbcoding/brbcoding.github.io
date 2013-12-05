@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: wordpress | Cody G. Henshaw]]></title>
+  <link href="http://brbcoding.github.io/blog/categories/wordpress/atom.xml" rel="self"/>
+  <link href="http://brbcoding.github.io/"/>
+  <updated>2013-12-05T14:10:42-05:00</updated>
+  <id>http://brbcoding.github.io/</id>
+  <author>
+    <name><![CDATA[Cody G. Henshaw]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[pinflickr - some kind of wordpress pinboard plugin]]></title>
+    <link href="http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/"/>
+    <updated>2013-08-05T15:09:27-04:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin</id>
+    <content type="html"><![CDATA[<p>I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a paste of the Readme file located in the git repo. Full write-up coming soon.</p>
+
+
+
+
+<p><a href="https://github.com/brbcoding/pinflickr/tree/master/wp-pinflickr">Full Source on Github</a></p>
+
+
+
+
+<p>This plugin uses the Flickr API to build a pinboard style gallery on an existing Wordpress site.</p>
+
+
+
+
+<p>Examples:</p>
+
+
+
+
+<p><img src="http://i.imgur.com/DxAHfvp.jpg" alt="Screenshot 1" />
+<img src="http://i.imgur.com/vzB3ljs.jpg" alt="Screenshot 2" /></p>
+
+
+
+
+<h1>Installation</h1>
+
+
+
+
+<ul>
+<li>Move wp-pinflickr folder to the <code>plugins</code> directory of your Wordpress site.</li>
+<li>Create a new API code and app secret on flickr <a href="http://www.flickr.com/services/developer/api/">More Info</a></li>
+<li>Access <em>Pinflickr Settings</em> under the <em>Settings</em> menu inside the Wordpress Admin Menu.</li>
+<li>Enter your API code and App Secret from Flickr. Save these changes.</li>
+<li>Create a new page that will hold your gallery</li>
+<li>The plugin works with a shortcode to display the gallery. The format is as follows:</li>
+</ul>
+
+
+
+
+<p><code>[pinflickr user_id="66956608@N06" tags="tags,separated,by,commas"]</code></p>
+
+
+
+
+<p>The easiest way to find a user id is by using the site <a href="http://idgettr.com/">idGettr</a>.</p>
+
+
+
+
+<ul>
+<li>Enter the shortcode with your <code>user_id</code> and desired <code>tags</code> and save this page.</li>
+<li>That&rsquo;s it! You&rsquo;ve created an awesome pinboard styled gallery!</li>
+</ul>
+
+
+
+
+<p><em>Working Demo Coming Soon</em></p>
+
+]]></content>
+  </entry>
+  
+</feed>

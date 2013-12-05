@@ -2,6 +2,12 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
+            http://brbcoding.github.io/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/
+        </loc>
+        <lastmod>2013-12-05T14:10:36-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
             http://brbcoding.github.io/blog/2013/12/05/sublimetext-2-keybindings-cheatsheet/
         </loc>
         <lastmod>2013-12-05T14:01:55-05:00</lastmod>
@@ -20,11 +26,11 @@
     </url>
     <url>
         <loc>http://brbcoding.github.io/blog/archives/</loc>
-        <lastmod>2013-12-05T14:08:01-05:00</lastmod>
+        <lastmod>2013-12-05T14:10:36-05:00</lastmod>
     </url>
     <url>
         <loc>http://brbcoding.github.io/</loc>
-        <lastmod>2013-12-05T14:08:01-05:00</lastmod>
+        <lastmod>2013-12-05T14:10:36-05:00</lastmod>
     </url>
     <url>
         <loc>http://brbcoding.github.io/robots.txt</loc>
