@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CSS animation | Cody G. Henshaw]]></title>
   <link href="http://brbcoding.github.io/blog/categories/css-animation/atom.xml" rel="self"/>
   <link href="http://brbcoding.github.io/"/>
-  <updated>2013-12-05T19:54:45-05:00</updated>
+  <updated>2013-12-05T19:55:38-05:00</updated>
   <id>http://brbcoding.github.io/</id>
   <author>
     <name><![CDATA[Cody G. Henshaw]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Creating loading spinners with pure CSS]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/09/14/creating-loading-spinners-with-pure-css-scss/"/>
-    <updated>2013-09-14T18:54:14-04:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/09/14/creating-loading-spinners-with-pure-css-scss</id>
+    <link href="http://brbcoding.github.io/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/"/>
+    <updated>2013-12-05T17:54:14-05:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss</id>
     <content type="html"><![CDATA[<h3>The HTML</h3>
 
 
