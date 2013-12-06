@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sass | Cody G. Henshaw]]></title>
+  <link href="http://brbcoding.github.io/blog/categories/sass/atom.xml" rel="self"/>
+  <link href="http://brbcoding.github.io/"/>
+  <updated>2013-12-05T19:25:14-05:00</updated>
+  <id>http://brbcoding.github.io/</id>
+  <author>
+    <name><![CDATA[Cody G. Henshaw]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Creating loading spinners with pure CSS]]></title>
+    <link href="http://brbcoding.github.io/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/"/>
+    <updated>2013-12-05T17:54:14-05:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss</id>
+    <content type="html"><![CDATA[<h3>The HTML</h3>
+
+
+<hr />
+
+
+<br />
+
+
+<p>HTML is pretty minimal in this example&hellip; We can create the simplest of loading spinners with just one single DOM element. Here&rsquo;s how it looks:</p>
+
+<p>``` html spinner.html</p>
+
+<div class="spinner"></div>
+
+
+<p>```</p>
+
+<p>That&rsquo;s all the HTML we need to create our spinner.</p>
+
+<h3>The CSS</h3>
+
+
+<hr />
+
+
+<br />
+
+
+<h3>Creating the Shape</h3>
+
+
+<br />
+
+
+<p>``` css spinner.css
+.spinner {</p>
+
+<pre><code>width:  5em;  
+height: 5em;
+border-top:    0.75em solid red;
+border-left:   0.75em solid green;
+border-right:  0.75em solid blue;
+border-bottom: 0.75em solid orange;
+border-radius: 50%;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>The width and the height are up to you. To make a circle, they need to be the same (obviously). I&rsquo;ll be using borders to create a &ldquo;donut&rdquo; shape. The border width can vary, but between 0.5 and 1 em seemed to look good here. Then, we round the (currently square) div by giving it a <code>border-radius</code> of 50%.</p>
+
+<h3>Animating the Shape</h3>
+
+
+<br />
+
+
+<p><strong>Disclaimer:</strong> Your mileage may vary on the vendor prefixes. I generally use compass w/ Sass or <a href="http://lea.verou.me/prefixfree/">Lea Verou&rsquo;s Prefix Free</a>, so most of these prefixes were looked up and not totally tested across all browsers.</p>
+
+<p>```
+.spinner {</p>
+
+<pre><code>/* previous shape omitted */
+-webkit-animation: spin 2s infinite linear;
+-moz-animation:    spin 2s infinite linear;
+-o-animation:      spin 2s infinite linear;
+animation:         spin 2s infinite linear;
+</code></pre>
+
+<p>}</p>
+
+<p>@-webkit-keyframes spin {</p>
+
+<pre><code>100% { -webkit-transform: rotate(360deg);}
+</code></pre>
+
+<p>}</p>
+
+<p>@-moz-keyframes spin {</p>
+
+<pre><code>100% { -moz-transform: rotate(360deg); }
+</code></pre>
+
+<p>}</p>
+
+<p>@-o-keyframes spin {</p>
+
+<pre><code>100% { -o-transform: rotate(360deg); } 
+</code></pre>
+
+<p>}
+@keyframes spin {</p>
+
+<pre><code>100% { transform: rotate(360deg);   }
+</code></pre>
+
+<p>}
+```</p>
+
+<p>The spinning animation is actually very simple. Using <code>keyframes</code>, we can simply transform our shape 360 degrees in the amount of time specified in the <code>animation</code>. You can play with the different easing functions (<code>linear, ease, cubic-bezier(), ...</code>) and choose which animation you like best.</p>
+
+<h3>The Demo</h3>
+
+
+<h4>(May need a refresh to see spinning)</h4>
+
+
+<p data-height="268" data-theme-id="2905" data-slug-hash="Jpums" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/Jpums'>Jpums</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+
+<script async src="http://brbcoding.github.io//codepen.io/assets/embed/ei.js"></script>
+
+
+
+
+<h3>Just for fun... No extra html, just the body element and pseudo-elements</h3>
+
+
+<h4>(May need a refresh to see spinning)</h4>
+
+
+<p>Keep in mind, this isn&rsquo;t very practical. You <em>could</em> add a class to the body and work off of that and make it slightly better, but you&rsquo;re probably better off just creating an element and hiding it until you need it.<br/>
+This demo uses prefix free as well as Sass (Scss syntax).<br/>
+<code>scss spinner.scss</code>
+$gray: rgba(0, 0, 0, 0.75);
+body {</p>
+
+<pre><code>&amp;:after {
+content: "";
+width: 5em;
+height: 5em;
+position: absolute;
+top: 0; bottom: 0; right: 0; left: 0;
+margin: auto;
+border-top: 0.5rem solid $gray;
+border-right: 0.25rem solid transparent;
+border-left: 0.5rem solid $gray;
+border-radius: 50%;
+animation: spin 1.5s infinite linear;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>@keyframes spin {</p>
+
+<pre><code> 100% { transform: rotate(360deg); }
+</code></pre>
+
+<p>}
+```</p>
+
+<p>By using only 3 borders, we are able to create a different type of spinner. The <code>border-radius</code> again creates the rounded shape of the spinner. The <code>keyframes</code> just rotate the pseudo-element 360 degrees over the duration of the <code>animation</code>. With a <code>linear</code> easing function, we create a smooth spinning effect.</p>
+
+<p data-height="252" data-theme-id="2905" data-slug-hash="axyDz" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/axyDz'>axyDz</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+
+<script async src="http://brbcoding.github.io//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>Now you should have an awesome spinner&hellip; Play around with different animations, directions, colors, etc&hellip; to make it your own. You can also use pseudo-elements to create multiple spinner shapes, positioned absolutely on top of one another. This can create a cool effect as well. That&rsquo;s beyond the scope of this post, but here&rsquo;s you can see this in action <a href="http://codepen.io/brbcoding/full/pLxgF">here</a>. Thanks for stopping by and feel free to say hi @CodyHenshaw.</p>
+]]></content>
+  </entry>
+  
+</feed>
