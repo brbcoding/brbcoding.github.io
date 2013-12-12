@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: functions | Cody G. Henshaw]]></title>
+  <link href="http://brbcoding.github.io/blog/categories/functions/atom.xml" rel="self"/>
+  <link href="http://brbcoding.github.io/"/>
+  <updated>2013-12-12T11:47:01-05:00</updated>
+  <id>http://brbcoding.github.io/</id>
+  <author>
+    <name><![CDATA[Cody G. Henshaw]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Shorthand Function Queues with JavaScript]]></title>
+    <link href="http://brbcoding.github.io/blog/2013/12/12/a-function-queue/"/>
+    <updated>2013-12-12T10:47:36-05:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/12/12/a-function-queue</id>
+    <content type="html"><![CDATA[<p>This is a short post explaining the line that blew my mind from John Resig&rsquo;s <a href="http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X/">Secrets of the JavaScript Ninja</a>. It turns out that it&rsquo;s a cool shorthand way of iterating over and calling multiple (anonymous) functions from a queue. The following is the function in question.</p>
+
+<p>``` javascript queue.js mark:3,3
+function runTest() {
+  if (!paused &amp;&amp; queue.length) {</p>
+
+<pre><code>queue.shift()();
+if (!paused) {
+  resume();
+}
+</code></pre>
+
+<p>  }
+}
+```</p>
+
+<p>Let&rsquo;s go ahead and break it out of the original function so that we can see what&rsquo;s actually happening (this block comes from a big test suite, so that&rsquo;s not helpful in this concise example). So, this is what we will be looking at:</p>
+
+<p><code>javascript
+queue.shift()()
+</code></p>
+
+<p>Before we get into the queue part though, let&rsquo;s take a gander at the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift"><code>shift()</code></a> function.</p>
+
+<p><blockquote><p>The shift method removes the element at the zeroeth index and shifts the values at consecutive indexes down, then returns the removed value.</p></blockquote></p>
+
+<p><code>javascript
+// create an array
+var arrToShift = [1, 2, 3, 4, 5]
+// shift returns the value it removes, so let's log that
+console.log(arrToShift.shift()) // 1
+console.log(arrToShift) // [ 2, 3, 4, 5 ]
+</code></p>
+
+<p>Not so useful yet? Ok&hellip; how about if we replace the array of integers with an array of functions?</p>
+
+<p>``` javascript
+var queue = [ function(){ return &lsquo;foo&rsquo; },</p>
+
+<pre><code>          function(){ return 'bar' },
+          function(){ return 'bat' } 
+        ]
+</code></pre>
+
+<p>console.log(queue.shift()) // [Function]
+```</p>
+
+<p>So our <code>shift()</code> did exactly what it did in the first example. It removed <em>and</em> returned the value at queue[0], which in this case, was a function. How do we run a function in javascript? By appending <code>()</code> to the function, of course! So, now check this out&hellip;</p>
+
+<p><code>javascript
+console.log(queue.shift()()) // foo
+// woohoo! we returned that first function and ran it
+</code></p>
+
+<p>You should now be able to see how we could use this as I mentioned earlier. Let&rsquo;s run ALL of our functions in the queue.</p>
+
+<p>``` javascript
+sLen = queue.length; // starting queue length
+for(var i = 0; i &lt; sLen; i++) {</p>
+
+<pre><code>console.log(queue.shift()())
+</code></pre>
+
+<p>}
+// foo
+// bar
+// bat
+```</p>
+
+<p>That&rsquo;s kind of long though, and this was about shorthand&hellip; SO, we can use <code>shift()</code> to our advantage here as well. Since the 0th element is REMOVED from the array, we should be able to just check if there is something at the 0th index. If so, we can keep going. This is the shorter version that I came up with.</p>
+
+<p><code>
+while(queue[0]) { console.log(queue.shift()()); }
+// while anything is at the 0th index, continue running
+// foo
+// bar
+// bat
+</code></p>
+
+<p>Pretty cool, right? We could also accomplish a queue-like system with <code>map()</code>, something like <code>queue.map(function(x){ console.log(x()) })</code>&hellip; That&rsquo;s a different story though. Hopefully you took something away from this post&hellip; Feel free to catch up with me (or point out errors) on twitter <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Shorthand Function Queues with JavaScript - Cody G. Henshaw</title>
+  <meta name="author" content="Cody G. Henshaw">
+
+  
+  <meta name="description" content="This is a short post explaining the line that blew my mind from John Resig&rsquo;s Secrets of the JavaScript Ninja. It turns out that it&rsquo;s a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brbcoding.github.io/blog/2013/12/12/a-function-queue">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Cody G. Henshaw" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46267402-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+	<div class="header-title"><a href="/">Cody G. Henshaw</a></div>
+
+
+	<br><div class="header-subtitle">Hacking the WWW</div>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brbcoding.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Cache</a></li>
+  <li><a href="https://github.com/brbcoding">{code}</a></li> 
+  <li><a href="/about">About</a></li>
+  <li><a href="https://twitter.com/CodyHenshaw">@me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+  
+    
+      <h1 class="entry-title">Shorthand Function Queues With JavaScript</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-12T10:47:36-05:00" pubdate data-updated="true">Dec 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This is a short post explaining the line that blew my mind from John Resig&rsquo;s <a href="http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X/">Secrets of the JavaScript Ninja</a>. It turns out that it&rsquo;s a cool shorthand way of iterating over and calling multiple (anonymous) functions from a queue. The following is the function in question.</p>
+
+<figure class='code'><figcaption><span>queue.js mark:3,3</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">runTest</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">paused</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()();</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">paused</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">resume</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s go ahead and break it out of the original function so that we can see what&rsquo;s actually happening (this block comes from a big test suite, so that&rsquo;s not helpful in this concise example). So, this is what we will be looking at:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Before we get into the queue part though, let&rsquo;s take a gander at the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift"><code>shift()</code></a> function.</p>
+
+<blockquote><p>The shift method removes the element at the zeroeth index and shifts the values at consecutive indexes down, then returns the removed value.</p></blockquote>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// create an array</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arrToShift</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="c1">// shift returns the value it removes, so let&#39;s log that</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arrToShift</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="c1">// 1</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arrToShift</span><span class="p">)</span> <span class="c1">// [ 2, 3, 4, 5 ]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not so useful yet? Ok&hellip; how about if we replace the array of integers with an array of functions?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;foo&#39;</span> <span class="p">},</span>
+</span><span class='line'>            <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;bar&#39;</span> <span class="p">},</span>
+</span><span class='line'>            <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;bat&#39;</span> <span class="p">}</span>
+</span><span class='line'>          <span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="c1">// [Function]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So our <code>shift()</code> did exactly what it did in the first example. It removed <em>and</em> returned the value at queue[0], which in this case, was a function. How do we run a function in javascript? By appending <code>()</code> to the function, of course! So, now check this out&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()())</span> <span class="c1">// foo</span>
+</span><span class='line'><span class="c1">// woohoo! we returned that first function and ran it</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You should now be able to see how we could use this as I mentioned earlier. Let&rsquo;s run ALL of our functions in the queue.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">sLen</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// starting queue length</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">sLen</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()())</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="c1">// foo</span>
+</span><span class='line'><span class="c1">// bar</span>
+</span><span class='line'><span class="c1">// bat</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s kind of long though, and this was about shorthand&hellip; SO, we can use <code>shift()</code> to our advantage here as well. Since the 0th element is REMOVED from the array, we should be able to just check if there is something at the 0th index. If so, we can keep going. This is the shorter version that I came up with.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">while</span><span class="p">(</span><span class="nx">queue</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()());</span> <span class="p">}</span>
+</span><span class='line'><span class="c1">// while anything is at the 0th index, continue running</span>
+</span><span class='line'><span class="c1">// foo</span>
+</span><span class='line'><span class="c1">// bar</span>
+</span><span class='line'><span class="c1">// bat</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty cool, right? We could also accomplish a queue-like system with <code>map()</code>, something like <code>queue.map(function(x){ console.log(x()) })</code>&hellip; That&rsquo;s a different story though. Hopefully you took something away from this post&hellip; Feel free to catch up with me (or point out errors) on twitter <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Cody G. Henshaw</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-12T10:47:36-05:00" pubdate data-updated="true">Dec 12<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/functions/'>functions</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/testing/'>testing</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brbcoding.github.io/blog/2013/12/12/a-function-queue/" data-via="CodyHenshaw" data-counturl="http://brbcoding.github.io/blog/2013/12/12/a-function-queue/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/" title="Previous Post: Creating loading spinners with pure CSS">&laquo; Creating loading spinners with pure CSS</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues with JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating loading spinners with pure CSS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: They were made for one another.</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">pinflickr - some kind of wordpress pinboard plugin</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brbcoding">@brbcoding</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brbcoding',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 -  Cody G. Henshaw <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

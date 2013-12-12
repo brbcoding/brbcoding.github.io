@@ -9,7 +9,7 @@
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="The HTML HTML is pretty minimal in this example&hellip; We can create the simplest of loading spinners with just one single DOM element. Here&rsquo;s &hellip;">
+  <meta name="description" content="This is a short post explaining the line that blew my mind from John Resig&rsquo;s Secrets of the JavaScript Ninja. It turns out that it&rsquo;s a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,152 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues With JavaScript</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-12T10:47:36-05:00" pubdate data-updated="true">Dec 12<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is a short post explaining the line that blew my mind from John Resig&rsquo;s <a href="http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X/">Secrets of the JavaScript Ninja</a>. It turns out that it&rsquo;s a cool shorthand way of iterating over and calling multiple (anonymous) functions from a queue. The following is the function in question.</p>
+
+<figure class='code'><figcaption><span>queue.js mark:3,3</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">runTest</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">paused</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()();</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">paused</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">resume</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s go ahead and break it out of the original function so that we can see what&rsquo;s actually happening (this block comes from a big test suite, so that&rsquo;s not helpful in this concise example). So, this is what we will be looking at:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Before we get into the queue part though, let&rsquo;s take a gander at the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift"><code>shift()</code></a> function.</p>
+
+<blockquote><p>The shift method removes the element at the zeroeth index and shifts the values at consecutive indexes down, then returns the removed value.</p></blockquote>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// create an array</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arrToShift</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</span><span class='line'><span class="c1">// shift returns the value it removes, so let&#39;s log that</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arrToShift</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="c1">// 1</span>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arrToShift</span><span class="p">)</span> <span class="c1">// [ 2, 3, 4, 5 ]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not so useful yet? Ok&hellip; how about if we replace the array of integers with an array of functions?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;foo&#39;</span> <span class="p">},</span>
+</span><span class='line'>            <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;bar&#39;</span> <span class="p">},</span>
+</span><span class='line'>            <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;bat&#39;</span> <span class="p">}</span>
+</span><span class='line'>          <span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="c1">// [Function]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So our <code>shift()</code> did exactly what it did in the first example. It removed <em>and</em> returned the value at queue[0], which in this case, was a function. How do we run a function in javascript? By appending <code>()</code> to the function, of course! So, now check this out&hellip;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()())</span> <span class="c1">// foo</span>
+</span><span class='line'><span class="c1">// woohoo! we returned that first function and ran it</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>You should now be able to see how we could use this as I mentioned earlier. Let&rsquo;s run ALL of our functions in the queue.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">sLen</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// starting queue length</span>
+</span><span class='line'><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">sLen</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()())</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="c1">// foo</span>
+</span><span class='line'><span class="c1">// bar</span>
+</span><span class='line'><span class="c1">// bat</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s kind of long though, and this was about shorthand&hellip; SO, we can use <code>shift()</code> to our advantage here as well. Since the 0th element is REMOVED from the array, we should be able to just check if there is something at the 0th index. If so, we can keep going. This is the shorter version that I came up with.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">while</span><span class="p">(</span><span class="nx">queue</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()());</span> <span class="p">}</span>
+</span><span class='line'><span class="c1">// while anything is at the 0th index, continue running</span>
+</span><span class='line'><span class="c1">// foo</span>
+</span><span class='line'><span class="c1">// bar</span>
+</span><span class='line'><span class="c1">// bat</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty cool, right? We could also accomplish a queue-like system with <code>map()</code>, something like <code>queue.map(function(x){ console.log(x()) })</code>&hellip; That&rsquo;s a different story though. Hopefully you took something away from this post&hellip; Feel free to catch up with me (or point out errors) on twitter <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -387,100 +533,6 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and Connecting to an EC2 Instance on Amazon AWS</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-08T15:04:26-04:00" pubdate data-updated="true">Aug 8<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Prerequisites:</h3>
-
-
-
-
-<ul>
-<li><a href="http://aws.amazon.com/">Amazon Web Services (AWS) Account</a></li>
-<li><a href="http://en.wikipedia.org/wiki/Secure_Shell%20Client">SSH</a> (I will be using <a href="http://www.cygwin.com/">Cygwin</a> w/ SSH)</li>
-</ul>
-
-
-
-
-<h3>Creating a new AWS EC2 Instance</h3>
-
-
-
-
-<p>At this point, I will assume that you have created an account with Amazon Web Services (AWS) and have also installed some kind of SSH client. There are numerous available, but I chose to use Cygwin, since it was already installed on my machine.</p>
-
-
-
-
-<p>After you&rsquo;ve completed these prerequisites, let&rsquo;s get started. First, you&rsquo;ll want to sign into your AWS account, and head to your AWS management console.</p>
-
-
-
-
-<p><img src="http://i.imgur.com/isw0e79.png" alt="AWS Screenshot 1" /></p>
-
-
-
-
-<p>We will be creating a new EC2 instance. Select EC2 from the Compute &amp; Networking category. Other types of AWS services will be explored in future blog posts.</p>
-
-
-
-
-<p><img src="http://i.imgur.com/G5NcOji.png" alt="AWS Screenshot 2" /></p>
-
-
-
-
-<p>From here, click the <strong>Launch Instance</strong> button, which will take you to the EC2 wizard.</p>
-
-
-
-
-<p><img src="http://i.imgur.com/Ms81htV.png" alt="AWS Screenshot 3" /></p>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -496,6 +548,10 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues with JavaScript</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating loading spinners with pure CSS</a>
       </li>
     
@@ -509,10 +565,6 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
     
       <li class="post">
         <a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">pinflickr - some kind of wordpress pinboard plugin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/">SublimeText 2 Keybindings Cheatsheet</a>
       </li>
     
   </ul>
