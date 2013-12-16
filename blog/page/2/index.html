@@ -9,8 +9,7 @@
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="Prerequisites: Amazon Web Services (AWS) Account
-SSH (I will be using Cygwin w/ SSH) Creating a new AWS EC2 Instance At this point, I will assume &hellip;">
+  <meta name="description" content="Using icon fonts with pseudo-elements is ridiculously easy. Choosing between icon font sets will take a lot longer than the actual implementation. I& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,85 @@ SSH (I will be using Cygwin w/ SSH) Creating a new AWS EC2 Instance At this poin
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon Fonts and Pseudo-elements: They Were Made for One Another.</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-15T15:07:21-04:00" pubdate data-updated="true">Sep 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using icon fonts with pseudo-elements is ridiculously easy. Choosing between icon font sets will take a lot longer than the actual implementation. I&rsquo;ll give an example below with some icons from the super popular <strong><a href="http://fortawesome.github.io/Font-Awesome/">font awesome</a></strong> set. We will import the icons from <strong><a href="http://twitter.com/TimPietrusky">@TimPietrusky&rsquo;s</a></strong> always useful, <strong><a href="http://weloveiconfonts.com/">weloveiconfonts</a></strong>.</p>
+
+
+
+
+<pre class="codepen" data-height="300" data-type="css" data-href="KwHkf" data-user="brbcoding"><code> </code></pre>
+
+
+
+
+<script async src="http://codepen.io:/assets/embed/ei.js"></script>
+
+
+
+
+<h3>Locating the values to use for each icon</h3>
+
+
+
+
+<p>I personally run Chrome in my day-to-day, so I generally use devtools for a lot of my testing&hellip; Here are some screenshots illustrating the &ldquo;look up&rdquo; process for these icon fonts. We will start by looking at the <strong><a href="http://fortawesome.github.io/Font-Awesome/icons/">Cheat Sheet</a></strong> on the font awesome github page.</p>
+
+
+
+
+<p>First, select an icon font. You&rsquo;ll be taken to the corresponding page which displays that icon in different sizes. From here, there are two ways we can go about finding the actual unicode value.</p>
+
+
+
+
+<ol>
+<li>It will be displayed in light gray next to the icon font&rsquo;s title.
+<img src="http://i.imgur.com/2OnWpUg.png" alt="Unicode 1" /></li>
+<li>More commonly, you&rsquo;ll need to check out the source to find out the corresponding unicode. To do this, right click an icon font and click <code>inspect element</code>. You may have to scroll a bit to find it, but in the styles view on the right-hand side, you&rsquo;ll find a css declaration that looks very similar to the example we used before.<br/>
+<img src="http://i.imgur.com/AHX5sRC.png" alt="Unicode 2" /></li>
+</ol>
+
+
+
+
+<p><em>That&rsquo;s it! We can put icon fonts <strong>everywhere</strong> now! (don&rsquo;t do that, seriously.)</em></p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -276,90 +354,9 @@ SSH (I will be using Cygwin w/ SSH) Creating a new AWS EC2 Instance At this poin
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/">SublimeText 2 Keybindings Cheatsheet</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-12T15:00:38-04:00" pubdate data-updated="true">May 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Migrating this post from my old blog&hellip; These keybindings are still relevant though.</p>
-
-<h3>General</h3>
-
-
-
-
-<h4>Files</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>Shift</code> + <code>n</code> &ndash; New Window<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>w</code> &ndash; Close Window<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>t</code> &ndash; Reopen Last File<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>s</code> &ndash; Save File As Prompt<br/>
-<code>Ctrl</code> + <code>w</code> &ndash; Close Current File<br/>
-<code>Ctrl</code> + <code>o</code> &ndash; Open File Prompt<br/>
-<code>Ctrl</code> + <code>n</code> &ndash; New File<br/>
-<code>Ctrl</code> + <code>s</code> &ndash; Save</p>
-
-
-
-
-<h4>Views</h4>
-
-
-
-
-<p><code>Ctrl</code> + <code>k</code> + <code>b</code> &ndash; Toggle Sidebar<br/>
-<code>F11</code> &ndash; Toggle Fullscreen<br/>
-<code>Shift</code> + <code>F11</code> &ndash; Toggle Distraction Free<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>p</code> &ndash; Command Prompt<br/>
-<code>Alt</code> + <code>Shift</code> + <code>2</code> &ndash; Split View into Two Columns<br/>
-<code>Alt</code> + <code>Shift</code> + <code>1</code> &ndash; Revert to One Column<br/>
-<code>Alt</code> + <code>Shift</code> + <code>5</code> &ndash; Set to Grid View<br/>
-<code>Ctrl</code> + <code>[NUM]</code> &ndash; Jump to Group Where <code>[NUM]</code> is 1-4<br/>
-<code>Ctrl</code> + <code>Shift</code> + <code>[NUM]</code>  &ndash; Move File to Specified Group Where <code>[NUM]</code> is 1-4</p>
-
-
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/3/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -372,6 +369,10 @@ SSH (I will be using Cygwin w/ SSH) Creating a new AWS EC2 Instance At this poin
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues with JavaScript</a>
@@ -387,10 +388,6 @@ SSH (I will be using Cygwin w/ SSH) Creating a new AWS EC2 Instance At this poin
     
       <li class="post">
         <a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">pinflickr - some kind of wordpress pinboard plugin</a>
       </li>
     
   </ul>

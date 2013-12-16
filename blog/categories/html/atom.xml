@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: html | Cody G. Henshaw]]></title>
+  <title><![CDATA[Category: HTML | Cody G. Henshaw]]></title>
   <link href="http://brbcoding.github.io/blog/categories/html/atom.xml" rel="self"/>
   <link href="http://brbcoding.github.io/"/>
-  <updated>2013-12-12T11:47:01-05:00</updated>
+  <updated>2013-12-16T09:57:30-05:00</updated>
   <id>http://brbcoding.github.io/</id>
   <author>
     <name><![CDATA[Cody G. Henshaw]]></name>
@@ -14,52 +14,84 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Icon fonts and pseudo-elements: They were made for one another.]]></title>
-    <link href="http://brbcoding.github.io/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/"/>
-    <updated>2013-09-15T15:07:21-04:00</updated>
-    <id>http://brbcoding.github.io/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story</id>
-    <content type="html"><![CDATA[<p>Using icon fonts with pseudo-elements is ridiculously easy. Choosing between icon font sets will take a lot longer than the actual implementation. I&rsquo;ll give an example below with some icons from the super popular <strong><a href="http://fortawesome.github.io/Font-Awesome/">font awesome</a></strong> set. We will import the icons from <strong><a href="http://twitter.com/TimPietrusky">@TimPietrusky&rsquo;s</a></strong> always useful, <strong><a href="http://weloveiconfonts.com/">weloveiconfonts</a></strong>.</p>
+    <title type="html"><![CDATA[CSS Variables in Firefox - AKA Variable Verbosity]]></title>
+    <link href="http://brbcoding.github.io/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/"/>
+    <updated>2013-12-16T09:04:09-05:00</updated>
+    <id>http://brbcoding.github.io/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity</id>
+    <content type="html"><![CDATA[<p>So, I saw this tweet from <a href="https://twitter.com/codepo8">Chris Heilmann</a>.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>CSS Variables in Firefox Nightly 29: <a href="http://t.co/sEFrYiURjq">http://t.co/sEFrYiURjq</a> via <a href="https://twitter.com/YouTube">@YouTube</a></p>&mdash; Christian Heilmann (@codepo8) <a href="https://twitter.com/codepo8/statuses/411692052993159168">December 14, 2013</a></blockquote>
 
 
+<script async src="http://brbcoding.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-<pre class="codepen" data-height="300" data-type="css" data-href="KwHkf" data-user="brbcoding"><code> </code></pre>
+<p></p>
+
+<p>Awesome&hellip; maybe. I grabbed a fresh copy of FF Nightly and got to playing. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">MDN Docs</a> give a couple of examples&hellip; Here&rsquo;s another.</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/pfyqn/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
+<p></p>
+
+<p>So, in this example, we don&rsquo;t use any variables at all. We do, however, repeat the color <code>#bada55</code> <strong>FOUR</strong> times. I&rsquo;m primarily a backend developer, and this redundancy kind of gives me the chills&hellip; Thanks to CSS Variables, however, we can eliminate some of this repetition. Here&rsquo;s another example, this time using variables&hellip; (Keep in mind, this will only work in Firefox 29 Nightly at the moment.)</p>
+
+<iframe width="100%" height="300" src="http://jsfiddle.net/pfyqn/2/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
-<script async src="http://codepen.io:/assets/embed/ei.js"></script>
+<p></p>
+
+<p>Pretty cool, right? It&rsquo;s not exactly <em>shorter</em>, but it is nice not having to remember hex values or color names&hellip;</p>
+
+<p>The title of this post included something along the lines of &ldquo;Variable Verbosity&rdquo;, and that&rsquo;s not to discount the addition of variable support into browsers. I think it&rsquo;s awesome that the web is moving forward, just don&rsquo;t go throwing away your Sass or Less install just yet (obviously these tools do WAY more than just add variables). Here&rsquo;s how variables look when you use preprocessors vs. firefox&rsquo;s implementation (merely to show differences in implementation).</p>
+
+<h4>Sass</h4>
 
 
+<p>``` css
+$foo: #000000;
+.bar {</p>
+
+<pre><code>background: $foo;
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>Less</h4>
 
 
-<h3>Locating the values to use for each icon</h3>
+<p>``` css
+@foo: #000000;
+.bar {</p>
+
+<pre><code>background: @foo;
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>FF 29</h4>
 
 
+<p>``` css
+/<em> invalid if not scoped </em>/
+:root {</p>
 
+<pre><code>var-foo: #000000;
+</code></pre>
 
-<p>I personally run Chrome in my day-to-day, so I generally use devtools for a lot of my testing&hellip; Here are some screenshots illustrating the &ldquo;look up&rdquo; process for these icon fonts. We will start by looking at the <strong><a href="http://fortawesome.github.io/Font-Awesome/icons/">Cheat Sheet</a></strong> on the font awesome github page.</p>
+<p>}
+.bar {</p>
 
+<pre><code>background: var(foo);
+</code></pre>
 
+<p>}
+```</p>
 
-
-<p>First, select an icon font. You&rsquo;ll be taken to the corresponding page which displays that icon in different sizes. From here, there are two ways we can go about finding the actual unicode value.</p>
-
-
-
-
-<ol>
-<li>It will be displayed in light gray next to the icon font&rsquo;s title.
-<img src="http://i.imgur.com/2OnWpUg.png" alt="Unicode 1" /></li>
-<li>More commonly, you&rsquo;ll need to check out the source to find out the corresponding unicode. To do this, right click an icon font and click <code>inspect element</code>. You may have to scroll a bit to find it, but in the styles view on the right-hand side, you&rsquo;ll find a css declaration that looks very similar to the example we used before.<br/>
-<img src="http://i.imgur.com/AHX5sRC.png" alt="Unicode 2" /></li>
-</ol>
-
-
-
-
-<p><em>That&rsquo;s it! We can put icon fonts <strong>everywhere</strong> now! (don&rsquo;t do that, seriously.)</em></p>
-
+<p>Well, that about does it for this article. As you can see, the native implementation is much longer than the preprocessing variants, but hey, at least we&rsquo;re moving forward. I&rsquo;ll mess around with it a bit more, and see if I can come up with some cool stuff that shows that these are actually useful (beyond the evident use). If I&rsquo;ve got any errors (which is not unlikely), please shoot me a note <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a> on twitter. Thanks for stopping by!</p>
 ]]></content>
   </entry>
   

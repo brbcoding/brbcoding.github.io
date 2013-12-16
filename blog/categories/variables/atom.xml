@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: CSS | Cody G. Henshaw]]></title>
-  <link href="http://brbcoding.github.io/blog/categories/css/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Variables | Cody G. Henshaw]]></title>
+  <link href="http://brbcoding.github.io/blog/categories/variables/atom.xml" rel="self"/>
   <link href="http://brbcoding.github.io/"/>
   <updated>2013-12-16T09:57:30-05:00</updated>
   <id>http://brbcoding.github.io/</id>
