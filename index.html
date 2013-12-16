@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Cody G. Henshaw</title>
+  <title>Blog Archive - Cody G. Henshaw</title>
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="So, I saw this tweet from Chris Heilmann. CSS Variables in Firefox Nightly 29: http://t.co/sEFrYiURjq via @YouTube&mdash; Christian Heilmann (@ &hellip;">
+  <meta name="description" content="Blog Archive 2013 CSS Variables in Firefox - AKA Variable Verbosity
+December 16 2013 Shorthand Function Queues with JavaScript
+December 12 2013 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,506 +80,89 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-16T09:04:09-05:00" pubdate data-updated="true">Dec 16<span>th</span>, 2013</time>
-        
-      </p>
+    <h1 class="entry-title">Blog Archive</h1>
     
   </header>
+  
+  <div id="blog-archives">
 
 
-  <div class="entry-content"><p>So, I saw this tweet from <a href="https://twitter.com/codepo8">Chris Heilmann</a>.</p>
 
-<blockquote class="twitter-tweet" lang="en"><p>CSS Variables in Firefox Nightly 29: <a href="http://t.co/sEFrYiURjq">http://t.co/sEFrYiURjq</a> via <a href="https://twitter.com/YouTube">@YouTube</a></p>&mdash; Christian Heilmann (@codepo8) <a href="https://twitter.com/codepo8/statuses/411692052993159168">December 14, 2013</a></blockquote>
+  
+  <h2>2013</h2>
 
+<article>
+  
+<h1><a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a></h1>
+<time datetime="2013-12-16T09:04:09-05:00" pubdate><span class='month'>December</span> <span class='day'>16</span> <span class='year'>2013</span></time>
 
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-<p></p>
-
-<p>Awesome&hellip; maybe. I grabbed a fresh copy of FF Nightly and got to playing. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">MDN Docs</a> give a couple of examples&hellip; Here&rsquo;s another.</p>
-
-<iframe width="100%" height="300" src="http://jsfiddle.net/pfyqn/embedded/result,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+</article>
 
 
-<p></p>
 
-<p>So, in this example, we don&rsquo;t use any variables at all. We do, however, repeat the color <code>#bada55</code> <strong>FOUR</strong> times. I&rsquo;m primarily a backend developer, and this redundancy kind of gives me the chills&hellip; Thanks to CSS Variables, however, we can eliminate some of this repetition. Here&rsquo;s another example, this time using variables&hellip; (Keep in mind, this will only work in Firefox 29 Nightly at the moment.)</p>
+<article>
+  
+<h1><a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues with JavaScript</a></h1>
+<time datetime="2013-12-12T10:47:36-05:00" pubdate><span class='month'>December</span> <span class='day'>12</span> <span class='year'>2013</span></time>
 
-<iframe width="100%" height="300" src="http://jsfiddle.net/pfyqn/2/embedded/result,css" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
-
-
-<p></p>
-
-<p>Pretty cool, right? It&rsquo;s not exactly <em>shorter</em>, but it is nice not having to remember hex values or color names&hellip;</p>
-
-<p>The title of this post included something along the lines of &ldquo;Variable Verbosity&rdquo;, and that&rsquo;s not to discount the addition of variable support into browsers. I think it&rsquo;s awesome that the web is moving forward, just don&rsquo;t go throwing away your Sass or Less install just yet (obviously these tools do WAY more than just add variables). Here&rsquo;s how variables look when you use preprocessors vs. firefox&rsquo;s implementation (merely to show differences in implementation).</p>
-
-<h4>Sass</h4>
+</article>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="err">$</span><span class="nt">foo</span><span class="o">:</span> <span class="nf">#000000</span><span class="o">;</span>
-</span><span class='line'><span class="nc">.bar</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="err">$</span><span class="n">foo</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+
+<article>
+  
+<h1><a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating loading spinners with pure CSS</a></h1>
+<time datetime="2013-12-05T17:54:14-05:00" pubdate><span class='month'>December</span> <span class='day'>05</span> <span class='year'>2013</span></time>
+
+</article>
 
 
-<h4>Less</h4>
+
+<article>
+  
+<h1><a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: They were made for one another.</a></h1>
+<time datetime="2013-09-15T15:07:21-04:00" pubdate><span class='month'>September</span> <span class='day'>15</span> <span class='year'>2013</span></time>
+
+</article>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="k">@foo</span><span class="o">:</span> <span class="nf">#000000</span><span class="p">;</span>
-</span><span class='line'><span class="nc">.bar</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="o">@</span><span class="n">foo</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+
+<article>
+  
+<h1><a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a></h1>
+<time datetime="2013-08-08T15:04:26-04:00" pubdate><span class='month'>August</span> <span class='day'>08</span> <span class='year'>2013</span></time>
+
+</article>
 
 
-<h4>FF 29</h4>
+
+<article>
+  
+<h1><a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">pinflickr - some kind of wordpress pinboard plugin</a></h1>
+<time datetime="2013-08-05T15:09:27-04:00" pubdate><span class='month'>August</span> <span class='day'>05</span> <span class='year'>2013</span></time>
+
+</article>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="c">/* invalid if not scoped */</span>
-</span><span class='line'><span class="nd">:root</span> <span class="p">{</span>
-</span><span class='line'>  <span class="n">var</span><span class="o">-</span><span class="n">foo</span><span class="o">:</span> <span class="m">#000000</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nc">.bar</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">background</span><span class="o">:</span> <span class="n">var</span><span class="p">(</span><span class="n">foo</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
 
+<article>
+  
+<h1><a href="/blog/2013/05/12/sublimetext-2-keybindings-cheatsheet/">SublimeText 2 Keybindings Cheatsheet</a></h1>
+<time datetime="2013-05-12T15:00:38-04:00" pubdate><span class='month'>May</span> <span class='day'>12</span> <span class='year'>2013</span></time>
 
-<p></p>
+</article>
 
-<p>Well, that about does it for this article. As you can see, the native implementation is much longer than the preprocessing variants, but hey, at least we&rsquo;re moving forward. I&rsquo;ll mess around with it a bit more, and see if I can come up with some cool stuff that shows that these are actually useful (beyond the evident use). If I&rsquo;ve got any errors (which is not unlikely), please shoot me a note <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a> on twitter. Thanks for stopping by!</p>
 </div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues With JavaScript</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
 
   
+</article>
 
-
-<time datetime="2013-12-12T10:47:36-05:00" pubdate data-updated="true">Dec 12<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is a short post explaining the line that blew my mind from John Resig&rsquo;s <a href="http://www.amazon.com/Secrets-JavaScript-Ninja-John-Resig/dp/193398869X/">Secrets of the JavaScript Ninja</a>. It turns out that it&rsquo;s a cool shorthand way of iterating over and calling multiple (anonymous) functions from a queue. The following is the function in question.</p>
-
-<figure class='code'><figcaption><span>queue.js mark:3,3</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">runTest</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">paused</span> <span class="o">&amp;&amp;</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()();</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">paused</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">resume</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Let&rsquo;s go ahead and break it out of the original function so that we can see what&rsquo;s actually happening (this block comes from a big test suite, so that&rsquo;s not helpful in this concise example). So, this is what we will be looking at:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Before we get into the queue part though, let&rsquo;s take a gander at the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift"><code>shift()</code></a> function.</p>
-
-<blockquote><p>The shift method removes the element at the zeroeth index and shifts the values at consecutive indexes down, then returns the removed value.</p></blockquote>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="c1">// create an array</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arrToShift</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-</span><span class='line'><span class="c1">// shift returns the value it removes, so let&#39;s log that</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arrToShift</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="c1">// 1</span>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arrToShift</span><span class="p">)</span> <span class="c1">// [ 2, 3, 4, 5 ]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Not so useful yet? Ok&hellip; how about if we replace the array of integers with an array of functions?</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">queue</span> <span class="o">=</span> <span class="p">[</span> <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;foo&#39;</span> <span class="p">},</span>
-</span><span class='line'>            <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;bar&#39;</span> <span class="p">},</span>
-</span><span class='line'>            <span class="kd">function</span><span class="p">(){</span> <span class="k">return</span> <span class="s1">&#39;bat&#39;</span> <span class="p">}</span>
-</span><span class='line'>          <span class="p">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">())</span> <span class="c1">// [Function]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So our <code>shift()</code> did exactly what it did in the first example. It removed <em>and</em> returned the value at queue[0], which in this case, was a function. How do we run a function in javascript? By appending <code>()</code> to the function, of course! So, now check this out&hellip;</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()())</span> <span class="c1">// foo</span>
-</span><span class='line'><span class="c1">// woohoo! we returned that first function and ran it</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>You should now be able to see how we could use this as I mentioned earlier. Let&rsquo;s run ALL of our functions in the queue.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">sLen</span> <span class="o">=</span> <span class="nx">queue</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="c1">// starting queue length</span>
-</span><span class='line'><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">sLen</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()())</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="c1">// foo</span>
-</span><span class='line'><span class="c1">// bar</span>
-</span><span class='line'><span class="c1">// bat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&rsquo;s kind of long though, and this was about shorthand&hellip; SO, we can use <code>shift()</code> to our advantage here as well. Since the 0th element is REMOVED from the array, we should be able to just check if there is something at the 0th index. If so, we can keep going. This is the shorter version that I came up with.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">while</span><span class="p">(</span><span class="nx">queue</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">shift</span><span class="p">()());</span> <span class="p">}</span>
-</span><span class='line'><span class="c1">// while anything is at the 0th index, continue running</span>
-</span><span class='line'><span class="c1">// foo</span>
-</span><span class='line'><span class="c1">// bar</span>
-</span><span class='line'><span class="c1">// bat</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Pretty cool, right? We could also accomplish a queue-like system with <code>map()</code>, something like <code>queue.map(function(x){ console.log(x()) })</code>&hellip; That&rsquo;s a different story though. Hopefully you took something away from this post&hellip; Feel free to catch up with me (or point out errors) on twitter <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a>.</p>
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating Loading Spinners With Pure CSS</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-05T17:54:14-05:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>The HTML</h3>
-
-
-<hr />
-
-
-<br />
-
-
-<p>HTML is pretty minimal in this example&hellip; We can create the simplest of loading spinners with just one single DOM element. Here&rsquo;s how it looks:</p>
-
-<figure class='code'><figcaption><span>spinner.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;spinner&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&rsquo;s all the HTML we need to create our spinner.</p>
-
-<h3>The CSS</h3>
-
-
-<hr />
-
-
-<br />
-
-
-<h3>Creating the Shape</h3>
-
-
-<br />
-
-
-<figure class='code'><figcaption><span>spinner.css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.spinner</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">width</span><span class="o">:</span>  <span class="m">5em</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">5em</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-top</span><span class="o">:</span>    <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">red</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-left</span><span class="o">:</span>   <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">green</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-right</span><span class="o">:</span>  <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">blue</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-bottom</span><span class="o">:</span> <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">orange</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>The width and the height are up to you. To make a circle, they need to be the same (obviously). I&rsquo;ll be using borders to create a &ldquo;donut&rdquo; shape. The border width can vary, but between 0.5 and 1 em seemed to look good here. Then, we round the (currently square) div by giving it a <code>border-radius</code> of 50%.</p>
-
-<h3>Animating the Shape</h3>
-
-
-<br />
-
-
-<p><strong>Disclaimer:</strong> Your mileage may vary on the vendor prefixes. I generally use compass w/ Sass or <a href="http://lea.verou.me/prefixfree/">Lea Verou&rsquo;s Prefix Free</a>, so most of these prefixes were looked up and not totally tested across all browsers.</p>
-
-<figure class='code'><figcaption><span>spinner.css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.spinner</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c">/* previous shape omitted */</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span> <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span>    <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span>      <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">animation</span><span class="o">:</span>         <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@-webkit-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@-moz-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@-o-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">@keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span>   <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The spinning animation is actually very simple. Using <code>keyframes</code>, we can simply transform our shape 360 degrees in the amount of time specified in the <code>animation</code>. You can play with the different easing functions (<code>linear, ease, cubic-bezier(), ...</code>) and choose which animation you like best.</p>
-
-<h3>The Demo</h3>
-
-
-<h4>(May need a refresh to see spinning)</h4>
-
-
-<p data-height="268" data-theme-id="2905" data-slug-hash="Jpums" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/Jpums'>Jpums</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
-
-
-<script async src="//codepen.io/assets/embed/ei.js"></script>
-
-
-
-
-<h3>Just for fun&#8230; No extra html, just the body element and pseudo-elements</h3>
-
-
-<h4>(May need a refresh to see spinning)</h4>
-
-
-<p>Keep in mind, this isn&rsquo;t very practical. You <em>could</em> add a class to the body and work off of that and make it slightly better, but you&rsquo;re probably better off just creating an element and hiding it until you need it.<br/>
-This demo uses prefix free as well as Sass (Scss syntax).</p>
-
-<figure class='code'><figcaption><span>spinner.scss &#8220;`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$gray</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.75</span><span class="p">);</span>
-</span><span class='line'><span class="nt">body</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
-</span><span class='line'>  <span class="na">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">height</span><span class="o">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">margin</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-top</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">rem</span> <span class="no">solid</span> <span class="nv">$gray</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-right</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.25</span><span class="kt">rem</span> <span class="no">solid</span> <span class="no">transparent</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-left</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">rem</span> <span class="no">solid</span> <span class="nv">$gray</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">animation</span><span class="o">:</span> <span class="n">spin</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>   <span class="nt">100</span><span class="err">%</span> <span class="p">{</span> <span class="na">transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="kt">deg</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>By using only 3 borders, we are able to create a different type of spinner. The <code>border-radius</code> again creates the rounded shape of the spinner. The <code>keyframes</code> just rotate the pseudo-element 360 degrees over the duration of the <code>animation</code>. With a <code>linear</code> easing function, we create a smooth spinning effect.</p>
-
-<p data-height="252" data-theme-id="2905" data-slug-hash="axyDz" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/axyDz'>axyDz</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
-
-
-<script async src="//codepen.io/assets/embed/ei.js"></script>
-
-
-<p>Now you should have an awesome spinner&hellip; Play around with different animations, directions, colors, etc&hellip; to make it your own. You can also use pseudo-elements to create multiple spinner shapes, positioned absolutely on top of one another. This can create a cool effect as well. That&rsquo;s beyond the scope of this post, but here&rsquo;s you can see this in action <a href="http://codepen.io/brbcoding/full/pLxgF">here</a>. Thanks for stopping by and feel free to say hi @CodyHenshaw.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -610,7 +195,7 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/brbcoding">@brbcoding</a> on GitHub
@@ -642,6 +227,7 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
 
   
 </aside>
+
 
     </div>
   </div>
