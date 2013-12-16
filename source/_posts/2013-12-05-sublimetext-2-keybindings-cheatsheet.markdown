@@ -1,0 +1,127 @@
+---
+layout: post
+title: "SublimeText 2 Keybindings Cheatsheet"
+date: 2013-05-12 14:00:38 -0500
+comments: true
+categories: 
+---
+
+Migrating this post from my old blog... These keybindings are still relevant though.  
+
+<h3>General</h3>
+
+<h4>Files</h4>
+
+<p><code>Ctrl</code> + <code>Shift</code> + <code>n</code> &ndash; New Window<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>w</code> &ndash; Close Window<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>t</code> &ndash; Reopen Last File<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>s</code> &ndash; Save File As Prompt<br/>
+<code>Ctrl</code> + <code>w</code> &ndash; Close Current File<br/>
+<code>Ctrl</code> + <code>o</code> &ndash; Open File Prompt<br/>
+<code>Ctrl</code> + <code>n</code> &ndash; New File<br/>
+<code>Ctrl</code> + <code>s</code> &ndash; Save</p>
+
+<h4>Views</h4>
+
+<p><code>Ctrl</code> + <code>k</code> + <code>b</code> &ndash; Toggle Sidebar<br/>
+<code>F11</code> &ndash; Toggle Fullscreen<br/>
+<code>Shift</code> + <code>F11</code> &ndash; Toggle Distraction Free<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>p</code> &ndash; Command Prompt<br/>
+<code>Alt</code> + <code>Shift</code> + <code>2</code> &ndash; Split View into Two Columns<br/>
+<code>Alt</code> + <code>Shift</code> + <code>1</code> &ndash; Revert to One Column<br/>
+<code>Alt</code> + <code>Shift</code> + <code>5</code> &ndash; Set to Grid View<br/>
+<code>Ctrl</code> + <code>[NUM]</code> &ndash; Jump to Group Where <code>[NUM]</code> is 1-4<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>[NUM]</code>  &ndash; Move File to Specified Group Where <code>[NUM]</code> is 1-4</p>
+
+<!-- more -->
+
+
+<h4>Editing</h4>
+
+<p><code>Ctrl</code> + <code>a</code> &ndash; Select All<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>m</code> &ndash; Select All Content in Current Parentheses<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>d</code> &ndash; Duplicate Lines<br/>
+<code>Ctrl</code> + <code>m</code> &ndash; Jump to Closing Parenthesis<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>l</code> &ndash; Split Selection to Lines<br/>
+<code>Ctrl</code> + <code>d</code> &ndash; Select Word; Repeat for Next Occurences<br/>
+<code>Backspace</code> or <code>Shift</code> + <code>Backspace</code> or <code>Ctrl</code> + <code>Shift</code> + <code>Backspace</code> &ndash; Left Delete<br/>
+<code>Delete</code> &ndash; Right Delete<br/>
+<code>Enter</code> or <code>Shift</code> + <code>Enter</code> &ndash; Insert Newline<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>Enter</code> &ndash; Insert Newline After<br/>
+<code>Ctrl</code> + <code>j</code> &ndash; Join Line Below to End of Current Line<br/>
+<code>Ctrl</code> + <code>]</code> &ndash; Indent Lines<br/>
+<code>Ctrl</code> + <code>[</code> &ndash; De-indent Lines<br/>
+<code>Ctrl</code> + <code>z</code> &ndash; Undo<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>z</code> or <code>Ctrl</code> + <code>y</code> &ndash; Redo<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>v</code> &ndash; Paste and Indent<br/>
+<code>Shift</code> + <code>Delete</code> or <code>Ctrl</code> + <code>x</code> &ndash; Cut<br/>
+<code>Ctrl</code> + <code>Insert</code> or <code>Ctrl</code> + <code>c</code> &ndash; Copy<br/>
+<code>Shift</code> + <code>Insert</code> or <code>Ctrl</code> + <code>v</code> &ndash; Paste<br/>
+<code>Ctrl</code> + <code>k</code> + <code>k</code> or <code>Ctrl</code> + <code>x</code> &ndash; Delete from Cursor to EOL<br/>
+<code>Ctrl</code> + <code>k</code> + <code>Backspace</code> &ndash; Delete from Cursor to BOL<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>Up OR Down</code> &ndash; Move Selected Up or Down<br/>
+<code>Ctrl</code> + <code>Space</code> &ndash; Select Next Auto-Complete Suggestion<br/>
+<code>Ctrl</code> + <code>k</code> + <code>u</code> &ndash; Transform to Uppercase<br/>
+<code>Ctrl</code> + <code>k</code> + <code>l</code> &ndash; Transform to Lowercase</p>
+
+<h4>Navigation</h4>
+
+<p><code>Left</code> or <code>Shift</code> + <code>Left</code> &ndash; Move Left (By Characters)<br/>
+<code>Right</code> or <code>Shift</code> + <code>Right</code> &ndash; Move Right (By Characters)<br/>
+<code>Up</code> or <code>Shift</code> + <code>Up</code> &ndash; Move Up (By Lines)<br/>
+<code>Down</code> or <code>Shift</code> + <code>Down</code> &ndash; Move Down (By Lines)<br/>
+<code>Ctrl</code> + <code>Left</code>  or <code>Ctrl</code> + <code>Shift</code> + <code>Left</code>  &ndash; Move Left (By Words)<br/>
+<code>Ctrl</code> + <code>Right</code> or <code>Ctrl</code> + <code>Shift</code> + <code>Right</code> &ndash; Move Right (By Word Ends)<br/>
+<code>Alt</code> + <code>Left</code> or <code>Alt</code> + <code>Shift</code> + <code>Left</code> &ndash; Move Left (By Subwords)<br/>
+<code>Alt</code> + <code>Right</code> or <code>Alt</code> + <code>Shift</code> + <code>Right</code> &ndash; Move Right (By Subword Ends)<br/>
+<code>Page Up</code> or <code>Shift</code> + <code>Page Up</code> &ndash; Next Page<br/>
+<code>Page Down</code> or <code>Shift</code> + <code>Page Down</code> &ndash; Previous Page<br/>
+<code>Home</code> or <code>Shift</code> + <code>Home</code> &ndash; Move to Beginning of Line<br/>
+<code>End</code> or <code>Shift</code> + <code>End</code> &ndash; Move to End of Line<br/>
+<code>Ctrl</code> + <code>Home</code> or <code>Ctrl</code> + <code>Shift</code> + <code>Home</code> &ndash;  Move to Beginning of File<br/>
+<code>Ctrl</code> + <code>End</code> or <code>Ctrl</code> + <code>Shift</code> + <code>End</code> &ndash; Move to End of File</p>
+
+<h4>Goto</h4>
+
+<p><code>Ctrl</code> + <code>p</code> &ndash; Quick Open Files by Name<br/>
+<code>Ctrl</code> + <code>r</code> &ndash; Goto Symbol<br/>
+<code>Ctrl</code> + <code>;</code> &ndash; Goto Word in Current File<br/>
+<code>Ctrl</code> + <code>g</code> &ndash; Goto Line in Current File</p>
+
+<h4>Find and Replace</h4>
+
+<p><code>Ctrl</code> + <code>f</code> &ndash; Open Find Menu<br/>
+<code>Ctrl</code> + <code>h</code> &ndash; Open Find and Replace Menu<br/>
+<code>Alt</code> + <code>r</code> &ndash; Toggle Regular Expression<br/>
+<code>Alt</code> + <code>c</code> &ndash; Toggle Case Sensitive<br/>
+<code>Alt</code> + <code>w</code> &ndash; Toggle Whole Word<br/>
+<code>Alt</code> + <code>a</code> &ndash; Toggle Preserve Case<br/>
+<code>F3</code> &ndash; Find<br/>
+<code>Alt</code> + <code>Enter</code> &ndash; Find All<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>f</code> &ndash; Find in Files<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>a</code> &ndash; Replace<br/>
+<code>Ctrl</code> + <code>Alt</code> + <code>Enter</code> &ndash; Replace All</p>
+
+<h4>Tabs</h4>
+
+<p><code>Ctrl</code> + <code>Shift</code> + <code>t</code> &ndash; Open Last Closed Tab<br/>
+<code>Ctrl</code> + <code>Page Up</code> &ndash; Cycle Up Through Tabs<br/>
+<code>Ctrl</code> + <code>Page Down</code> &ndash; Cycle Down Through Tabs</p>
+
+<h4>Bookmarks</h4>
+
+<p><code>Ctrl</code> + <code>F2</code> &ndash; Toggle Bookmark<br/>
+<code>F2</code> &ndash; Next Bookmark<br/>
+<code>Shift</code> + <code>F2</code> &ndash; Previous Bookmark<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>F2</code> &ndash; Clear Bookmarks</p>
+
+<h4>Comments</h4>
+
+<p><code>Ctrl</code> + <code>/</code> &ndash; Comment/Un-Comment a Line<br/>
+<code>Ctrl</code> + <code>Shift</code> + <code>/</code> &ndash; Block Comment Selection</p>
+
+<h3>Plugin Specific</h3>
+
+<h4>Zen Coding/Emmet</h4>
+
+<p><code>Ctrl</code> + <code>Alt</code> + <code>Enter</code> &ndash; Open Live Editor</p>

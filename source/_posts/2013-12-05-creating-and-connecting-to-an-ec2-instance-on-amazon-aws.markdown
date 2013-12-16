@@ -1,0 +1,224 @@
+---
+layout: post
+title: "Creating and connecting to an EC2 instance on Amazon AWS"
+date: 2013-08-08 14:04:26 -0500
+comments: true
+categories: 
+---
+
+<h3>Prerequisites:</h3>
+
+<ul>
+<li><a href="http://aws.amazon.com/">Amazon Web Services (AWS) Account</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Secure_Shell%20Client">SSH</a> (I will be using <a href="http://www.cygwin.com/">Cygwin</a> w/ SSH)</li>
+</ul>
+
+
+<h3>Creating a new AWS EC2 Instance</h3>
+
+<p>At this point, I will assume that you have created an account with Amazon Web Services (AWS) and have also installed some kind of SSH client. There are numerous available, but I chose to use Cygwin, since it was already installed on my machine.</p>
+
+<p>After you&rsquo;ve completed these prerequisites, let&rsquo;s get started. First, you&rsquo;ll want to sign into your AWS account, and head to your AWS management console.</p>
+
+<p><img src="http://i.imgur.com/isw0e79.png" alt="AWS Screenshot 1" /></p>
+
+<p>We will be creating a new EC2 instance. Select EC2 from the Compute &amp; Networking category. Other types of AWS services will be explored in future blog posts.</p>
+
+<p><img src="http://i.imgur.com/G5NcOji.png" alt="AWS Screenshot 2" /></p>
+
+<p>From here, click the <strong>Launch Instance</strong> button, which will take you to the EC2 wizard.</p>
+
+<p><img src="http://i.imgur.com/Ms81htV.png" alt="AWS Screenshot 3" /></p>
+
+<!--more-->
+
+
+<p>In this example, we will be setting up Ubuntu 12.04.2 on our AWS instance.</p>
+
+<ol>
+<li>Select the <strong>Quick Launch Wizard</strong> radio button so we can get up and running as quickly as possible.</li>
+<li>Name your Instance. This is optional, but will be helpful if you have many instances. You can leave this blank for now (or fill it in if you desire).</li>
+<li>Now we will choose the type of operating system for our instance. We will be using <strong>Ubuntu Server 12.04.2 LTS &ndash; 64bit</strong> in this example. Select <strong>Ubuntu Server 12.04.2 LTS</strong> from the list of operating systems.</li>
+<li>Now that we have selected an OS, we can generate our key pair. This key pair will later be used to authenticate your local machine when connecting to your instance. To create the <code>.pem</code> file, we will need to fill in a name for the key. I have named mine aws in the screenshot.</li>
+<li>Now we can download the <code>.pem</code> file by clicking the Download button (after you&rsquo;ve chosen a name). The key&rsquo;s name will be <code>name-from-step4.pem</code>. Keep in mind where this file is being saved to on your local machine. We will need this location later.</li>
+</ol>
+
+
+<p><img src="http://i.imgur.com/tMHvd5l.png" alt="AWS Screenshot 4" /></p>
+
+<p>Now that you&rsquo;ve downloaded your <code>.pem</code> file, you should be able to continue. If not, try re-downloading the key and then proceed.</p>
+
+<p>You will now be taken to a screen which displays the details of our instance. From here, we can click the <strong>Launch</strong> button to proceed.
+<img src="http://i.imgur.com/8hRwy7q.png" alt="AWS Screenshot 5" /></p>
+
+<p>You should now see a dialog box which shows <strong>Your instance is now launching.</strong> Keep note of the instance number that is displayed in the top left corner. Mine displays <code>i-f41b22c1</code>. Close this dialog box to continue.</p>
+
+<p><img src="http://i.imgur.com/cM4wB5w.png" alt="AWS Screenshot 6" /></p>
+
+<p>You will now be taken to your list of instances. As you can see, I already have two other instances running at the moment. The following numbered list corresponds to the numbers in the screenshot below.</p>
+
+<ol>
+<li>The <strong>Instances</strong> tab on your sidebar will give you easy access to this page. Remember where it is located.</li>
+<li>This is the refresh button.</li>
+<li>This is the state column. The possible states are <strong>pending</strong>, <strong>running</strong>, <strong>shutting-down</strong>, <strong>terminated</strong>, <strong>stopping</strong>, and <strong>stopped</strong>. Use the refresh button outlined in the previous step to refresh the page until your instance&rsquo;s state reads <strong>running</strong>.</li>
+<li>This is your public DNS. Copy this address and store it in an easily accessible place. Mine reads <code>ec2-54-218-70-43.us-west-2.compute.amazonaws.com</code>. Yours will be different.</li>
+</ol>
+
+
+<p><img src="http://i.imgur.com/CCfKIdR.png" alt="AWS Screenshot 7" /></p>
+
+<p><strong>That&rsquo;s It! You&rsquo;ve successfully created a new EC2 instance and are running in the cloud! Not much we can do from here though, so let&rsquo;s get started with SSHing to this instance</strong></p>
+
+<h3>SSHing to your new AWS EC2 Instance</h3>
+
+<p>Now that we have successfully spun up a new EC2 instance, we can go ahead and connect to it&hellip; Fire up your SSH client (I&rsquo;ll be using <a href="http://www.cygwin.com/">Cygwin</a> with SSH installed) and let&rsquo;s get started.</p>
+
+<p>Typing <code>ssh</code> into the terminal window will bring up usage tips for the <code>ssh</code> command. The command we will be using to connect will look something like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -iv privatekeyfile.pem user@publicdns.amazonaws.com</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>The <code>ssh</code> command tells the terminal to create a new SSH session.</li>
+<li>The <code>-i</code> is an argument passed to <code>ssh</code> which tells the shell to use the file after the arguments as the identification file, and the <code>v</code> tells the shell to output in verbose mode. Verbose mode is useful for debugging and will help us to troubleshoot if we have issues connecting.</li>
+<li>The <code>privatekeyfile.pem</code> is the file that we downloaded before launching our AWS instance. We will need this to connect to the instance.</li>
+<li><code>user@publicdns.amazonaws.com</code> is the public DNS of the server we want to connect to (our AWS instance, in this case).</li>
+</ul>
+
+
+<p>Now that you know what this command is doing, let&rsquo;s run it with our own private key and public dns&hellip;</p>
+
+<p>Because I am using Cygwin, I will have to move my public key from wherever I downloaded it before to the correct Cygwin directory.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cp C:/Users/chenshaw/Downloads/aws.pem /cygwin/home/chenshaw/ .</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The command <code>cp</code> will copy the file from <code>C:/Users/chenshaw/Downloads/aws.pem</code> to <code>/cygwin/home/chenshaw</code>. Now that we have our private key in the correct place, we should be able to run the <code>ssh</code> command.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -2 -vi aws.pem ubuntu@ec2-54-218-70-43.us-west-2.compute.amazonaws.com</span></code></pre></td></tr></table></div></figure>
+
+
+<p>After running this command, you&rsquo;ll see some debug information and then finally a question like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>The authenticity of host 'ec2-54-218-70-43.us-west-2.compute.amazonaws.com (54.218.70.43)' can't be established.
+</span><span class='line'>ECDSA key fingerprint is a1:3b:50:fb:fc:2c:ed:9d:b1:13:41:74:10:91:7b:52.
+</span><span class='line'>// now type yes to continue.
+</span><span class='line'>Are you sure you want to continue connecting (yes/no)? yes</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Was your connection successful? Mine wasn&rsquo;t&hellip; Here&rsquo;s what I saw:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span><span class='line'>@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+</span><span class='line'>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+</span><span class='line'>Permissions 0644 for 'aws.pem' are too open.
+</span><span class='line'>It is required that your private key files are NOT accessible by others.
+</span><span class='line'>This private key will be ignored.
+</span><span class='line'>bad permissions: ignore key: aws.pem
+</span><span class='line'>debug1: No more authentication methods to try.
+</span><span class='line'>Permission denied (publickey).</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Pretty simple error message, right? Because our private key file&rsquo;s permissions are too open, we are not allowed to connect. Let&rsquo;s fix that.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ chmod -v 0400 aws.pem
+</span><span class='line'>mode of `aws.pem' changed from 0644 (rw-r--r--) to 0400 (r--------)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The <code>chmod</code> command changes access to files. Discussing <code>chmod</code> is beyond the scope of this article, so for now, let&rsquo;s just use <code>0400</code>&hellip; Now that we&rsquo;ve secured our <code>.pem</code> file, let&rsquo;s try connecting again.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -2 -vi aws.pem ubuntu@ec2-54-218-70-43.us-west-2.compute.amazonaws.com
+</span><span class='line'>
+</span><span class='line'>debug1: Entering interactive session.
+</span><span class='line'>Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-virtual x86_64)
+</span><span class='line'>
+</span><span class='line'> * Documentation:  https://help.ubuntu.com/
+</span><span class='line'>
+</span><span class='line'>  System information as of Thu Jun 27 13:05:09 UTC 2013
+</span><span class='line'>
+</span><span class='line'>  System load:  0.0               Processes:           58
+</span><span class='line'>  Usage of /:   12.1% of 7.87GB   Users logged in:     0
+</span><span class='line'>  Memory usage: 32%               IP address for eth0: 172.31.34.225
+</span><span class='line'>  Swap usage:   0%
+</span><span class='line'>
+</span><span class='line'>  Graph this data and manage this system at https://landscape.canonical.com/
+</span><span class='line'>
+</span><span class='line'>  Get cloud support with Ubuntu Advantage Cloud Guest:
+</span><span class='line'>    http://www.ubuntu.com/business/services/cloud
+</span><span class='line'>
+</span><span class='line'>  Use Juju to deploy your cloud instances and workloads:
+</span><span class='line'>    https://juju.ubuntu.com/#cloud-precise
+</span><span class='line'>
+</span><span class='line'>50 packages can be updated.
+</span><span class='line'>21 updates are security updates.
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>The programs included with the Ubuntu system are free software;
+</span><span class='line'>the exact distribution terms for each program are described in the
+</span><span class='line'>individual files in /usr/share/doc/*/copyright.
+</span><span class='line'>
+</span><span class='line'>Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+</span><span class='line'>applicable law.
+</span><span class='line'>
+</span><span class='line'>To run a command as administrator (user "root"), use "sudo &lt;command>".
+</span><span class='line'>See "man sudo_root" for details.
+</span><span class='line'>
+</span><span class='line'>ubuntu@ip-172-31-34-225:~$</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Looks like we&rsquo;ve connected successfully! Congratulations, and welcome to the cloud. Ask your questions in the comments or feel free to connect with me @CodyHenshaw on twitter. Thanks for stopping by!</strong></p>
