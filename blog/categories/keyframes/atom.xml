@@ -4,7 +4,7 @@
   <title><![CDATA[Category: keyframes | Cody G. Henshaw]]></title>
   <link href="http://brbcoding.github.io/blog/categories/keyframes/atom.xml" rel="self"/>
   <link href="http://brbcoding.github.io/"/>
-  <updated>2013-12-17T19:05:20-05:00</updated>
+  <updated>2013-12-17T19:06:19-05:00</updated>
   <id>http://brbcoding.github.io/</id>
   <author>
     <name><![CDATA[Cody G. Henshaw]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Faking a .gif with CSS keyframes]]></title>
+    <title type="html"><![CDATA[Faking an animated .gif with CSS keyframes]]></title>
     <link href="http://brbcoding.github.io/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/"/>
     <updated>2013-12-17T16:31:31-05:00</updated>
     <id>http://brbcoding.github.io/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes</id>
