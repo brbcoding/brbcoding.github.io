@@ -4,7 +4,7 @@
   <title><![CDATA[Category: css3 | Cody G. Henshaw]]></title>
   <link href="http://brbcoding.github.io/blog/categories/css3/atom.xml" rel="self"/>
   <link href="http://brbcoding.github.io/"/>
-  <updated>2013-12-17T19:04:08-05:00</updated>
+  <updated>2013-12-17T19:05:20-05:00</updated>
   <id>http://brbcoding.github.io/</id>
   <author>
     <name><![CDATA[Cody G. Henshaw]]></name>
@@ -64,7 +64,7 @@
 <script async src="http://brbcoding.github.io//codepen.io/assets/embed/ei.js"></script>
 
 
-<p>So, the cool part about this is that we are using <code>background-image</code>. The background image can be animated with keyframes. Therefore, we can use keyframes to <strong>change</strong> the url of the <code>background-image</code>! Just make sure to call the animation from within your <code>#faux-gif</code>&hellip; You can read more about keyframes on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">MDN Site</a>.</p>
+<p>So, the cool part about this is that we are using <code>background-image</code>. The background image can be animated with keyframes. Therefore, we can use keyframes to change the url of the <code>background-image</code>! Just make sure to call the animation from within your <code>#faux-gif</code>&hellip; You can read more about keyframes on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">MDN Site</a>.</p>
 
 <p>A trivial example using just two images might be something like this. Note the `animation: giffy 0.5s infinite linear. That&rsquo;s how we make the animation actually run. 0.5s will be the duration of our animation called &ldquo;giffy&rdquo;, it will run indefinitely, and it will have a linear timing function (as opposed to ease, ease-in-out, etc&hellip;):</p>
 
