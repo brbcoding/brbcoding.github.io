@@ -9,7 +9,7 @@
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="So, I saw this tweet from Chris Heilmann. CSS Variables in Firefox Nightly 29: http://t.co/sEFrYiURjq via @YouTube&mdash; Christian Heilmann (@ &hellip;">
+  <meta name="description" content="Animated gifs can be pretty impactful if used correctly. They can illustrate a point without having to embed a video or a wall of text. The issue &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,153 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/">Faking a .gif With CSS Keyframes</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-17T16:31:31-05:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Animated gifs can be pretty impactful if used correctly. They can illustrate a point without having to embed a video or a wall of text. The issue with gifs is that they are just pictures. They can&rsquo;t be stopped or started (though many people fake it by swapping a static image). I ran across a question on Stack Overflow which asked for a solution to stop (by stop, I mean freeze and don&rsquo;t reset) a gif on <code>:hover</code> and resume on mouseout. JavaScript plugins were immediately suggested, which might be the correct solution to this problem&hellip; but let&rsquo;s try it with CSS animations anyway.</p>
+
+<p>The first thing we will need to do is break our .gif into frames. There are tons of tools online that allow you to do this, and I&rsquo;d even guess that ImageMagick will do it for you as well. Here&rsquo;s the one I chose to start with:</p>
+
+<p><img src="http://i.imgur.com/MxrP3DG.gif" alt="bananananana" /></p>
+
+<p>I broke mine into 8 individual frames. Here they are:</p>
+
+<p><img src="http://i.imgur.com/E2ee6fI.gif" alt="banana1" />
+<img src="http://i.imgur.com/JIi0uul.gif" alt="banana2" />
+<img src="http://i.imgur.com/owNGnNN.gif" alt="banana3" />
+<img src="http://i.imgur.com/2Ii6XOz.gif" alt="banana4" />
+<img src="http://i.imgur.com/ZmQBrQ5.gif" alt="banana5" />
+<img src="http://i.imgur.com/iAsfHyY.gif" alt="banana6" />
+<img src="http://i.imgur.com/AJwRblj.gif" alt="banana7" />
+<img src="http://i.imgur.com/fx5wUNY.gif" alt="banana8" /></p>
+
+<p>So, that&rsquo;s it for prep work&hellip; Let&rsquo;s get our html ready.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;faux-gif&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yep, that&rsquo;s it&hellip; Now, let&rsquo;s add one of the images as a <code>background-image</code>.</p>
+
+<div data-height="268" data-theme-id="2905" data-slug-hash="gqxEo" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif { 
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    
+    background-image: url(http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/gqxEo'>gqxEo</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>So, the cool part about this is that we are using <code>background-image</code>. The background image can be animated with keyframes. Therefore, we can use keyframes to <strong>change</strong> the url of the <code>background-image</code>! Just make sure to call the animation from within your <code>#faux-gif</code>&hellip; You can read more about keyframes on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">MDN Site</a>.</p>
+
+<p>A trivial example using just two images might be something like this. Note the `animation: giffy 0.5s infinite linear. That&rsquo;s how we make the animation actually run. 0.5s will be the duration of our animation called &ldquo;giffy&rdquo;, it will run indefinitely, and it will have a linear timing function (as opposed to ease, ease-in-out, etc&hellip;):</p>
+
+<div data-height="268" data-theme-id="2905" data-slug-hash="urHce" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    background-image: url(http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    animation: giffy 0.5s infinite linear;
+}
+
+
+@keyframes giffy {
+    from   { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif&#x27;); } 
+    to { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;fx5wUNY.gif&#x27;); }
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/urHce'>urHce</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>We have an almost-gif now&hellip; We just need to add the other frames. The cool part about keyframes is that you can use percentages instead of <code>to{ } ... from{ }</code>. Let&rsquo;s see how many we will need&hellip; We have 8 frames total, and 100% duration to work with. You may first think that you&rsquo;ll work in increments of 12.5%. That would be fine, but we haven&rsquo;t taken into account that our first frame is already taken care of with the initial state. That&rsquo;s the value we&rsquo;ll use at 0%. Instead, we&rsquo;ll want to do 100 / 7 (rounded to something simple to work with)&hellip; I&rsquo;ll just use 14.25%. Now, we&rsquo;ll create keyframes from 0% &ndash; ~100% in increments of 14.25%.</p>
+
+<div data-height="268" data-theme-id="2905" data-slug-hash="Kiumf" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    background-image: url(http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    animation: giffy 0.5s infinite linear;
+}
+
+#faux-gif:hover {
+    animation-play-state:paused;
+}
+
+@keyframes giffy {
+    0%   { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif&#x27;); } 
+    14.25%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;JIi0uul.gif&#x27;); }
+    28.5%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;owNGnNN.gif&#x27;);}
+    42.75%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;2Ii6XOz.gif&#x27;); }
+    57%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;ZmQBrQ5.gif&#x27;); }
+    71.25%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;iAsfHyY.gif&#x27;); }
+    85.5%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;AJwRblj.gif&#x27;); }
+    99.75% { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;fx5wUNY.gif&#x27;); }
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/Kiumf'>Kiumf</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>And that&rsquo;s about it. You can play with the animation timing, the duration, etc&hellip; You couldn&rsquo;t do that with your .gif, now could you? You&rsquo;ll see that I also added a <code>:hover</code> state. That was to satisfy the requirements of the Stack Overflow post I was solving with this technique. Thanks for checking it out, please let me know what mistakes I have made, and say hi <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a> on twitter.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -360,233 +507,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating Loading Spinners With Pure CSS</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-05T17:54:14-05:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>The HTML</h3>
-
-
-<hr />
-
-
-<br />
-
-
-<p>HTML is pretty minimal in this example&hellip; We can create the simplest of loading spinners with just one single DOM element. Here&rsquo;s how it looks:</p>
-
-<figure class='code'><figcaption><span>spinner.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;spinner&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&rsquo;s all the HTML we need to create our spinner.</p>
-
-<h3>The CSS</h3>
-
-
-<hr />
-
-
-<br />
-
-
-<h3>Creating the Shape</h3>
-
-
-<br />
-
-
-<figure class='code'><figcaption><span>spinner.css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.spinner</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">width</span><span class="o">:</span>  <span class="m">5em</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">5em</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-top</span><span class="o">:</span>    <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">red</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-left</span><span class="o">:</span>   <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">green</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-right</span><span class="o">:</span>  <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">blue</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-bottom</span><span class="o">:</span> <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">orange</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p>The width and the height are up to you. To make a circle, they need to be the same (obviously). I&rsquo;ll be using borders to create a &ldquo;donut&rdquo; shape. The border width can vary, but between 0.5 and 1 em seemed to look good here. Then, we round the (currently square) div by giving it a <code>border-radius</code> of 50%.</p>
-
-<h3>Animating the Shape</h3>
-
-
-<br />
-
-
-<p><strong>Disclaimer:</strong> Your mileage may vary on the vendor prefixes. I generally use compass w/ Sass or <a href="http://lea.verou.me/prefixfree/">Lea Verou&rsquo;s Prefix Free</a>, so most of these prefixes were looked up and not totally tested across all browsers.</p>
-
-<figure class='code'><figcaption><span>spinner.css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.spinner</span> <span class="p">{</span>
-</span><span class='line'>  <span class="c">/* previous shape omitted */</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span> <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span>    <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span>      <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">animation</span><span class="o">:</span>         <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@-webkit-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@-moz-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@-o-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="k">@keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span>   <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The spinning animation is actually very simple. Using <code>keyframes</code>, we can simply transform our shape 360 degrees in the amount of time specified in the <code>animation</code>. You can play with the different easing functions (<code>linear, ease, cubic-bezier(), ...</code>) and choose which animation you like best.</p>
-
-<h3>The Demo</h3>
-
-
-<h4>(May need a refresh to see spinning)</h4>
-
-
-<p data-height="268" data-theme-id="2905" data-slug-hash="Jpums" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/Jpums'>Jpums</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
-
-
-<script async src="//codepen.io/assets/embed/ei.js"></script>
-
-
-
-
-<h3>Just for fun&#8230; No extra html, just the body element and pseudo-elements</h3>
-
-
-<h4>(May need a refresh to see spinning)</h4>
-
-
-<p>Keep in mind, this isn&rsquo;t very practical. You <em>could</em> add a class to the body and work off of that and make it slightly better, but you&rsquo;re probably better off just creating an element and hiding it until you need it.<br/>
-This demo uses prefix free as well as Sass (Scss syntax).</p>
-
-<figure class='code'><figcaption><span>spinner.scss &#8220;`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$gray</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.75</span><span class="p">);</span>
-</span><span class='line'><span class="nt">body</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
-</span><span class='line'>  <span class="na">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">height</span><span class="o">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">margin</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-top</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">rem</span> <span class="no">solid</span> <span class="nv">$gray</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-right</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.25</span><span class="kt">rem</span> <span class="no">solid</span> <span class="no">transparent</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-left</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">rem</span> <span class="no">solid</span> <span class="nv">$gray</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
-</span><span class='line'>  <span class="na">animation</span><span class="o">:</span> <span class="n">spin</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">@keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
-</span><span class='line'>   <span class="nt">100</span><span class="err">%</span> <span class="p">{</span> <span class="na">transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="kt">deg</span><span class="p">);</span> <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>By using only 3 borders, we are able to create a different type of spinner. The <code>border-radius</code> again creates the rounded shape of the spinner. The <code>keyframes</code> just rotate the pseudo-element 360 degrees over the duration of the <code>animation</code>. With a <code>linear</code> easing function, we create a smooth spinning effect.</p>
-
-<p data-height="252" data-theme-id="2905" data-slug-hash="axyDz" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/axyDz'>axyDz</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
-
-
-<script async src="//codepen.io/assets/embed/ei.js"></script>
-
-
-<p>Now you should have an awesome spinner&hellip; Play around with different animations, directions, colors, etc&hellip; to make it your own. You can also use pseudo-elements to create multiple spinner shapes, positioned absolutely on top of one another. This can create a cool effect as well. That&rsquo;s beyond the scope of this post, but here&rsquo;s you can see this in action <a href="http://codepen.io/brbcoding/full/pLxgF">here</a>. Thanks for stopping by and feel free to say hi @CodyHenshaw.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -602,6 +522,10 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/">Faking a .gif with CSS keyframes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a>
       </li>
     
@@ -615,10 +539,6 @@ This demo uses prefix free as well as Sass (Scss syntax).</p>
     
       <li class="post">
         <a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: They were made for one another.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a>
       </li>
     
   </ul>

@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Faking a .gif with CSS keyframes - Cody G. Henshaw</title>
+  <meta name="author" content="Cody G. Henshaw">
+
+  
+  <meta name="description" content="Animated gifs can be pretty impactful if used correctly. They can illustrate a point without having to embed a video or a wall of text. The issue &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://brbcoding.github.io/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Cody G. Henshaw" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46267402-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner">
+	<div class="header-title"><a href="/">Cody G. Henshaw</a></div>
+
+
+	<br><div class="header-subtitle">Hacking the WWW</div>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:brbcoding.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog">Blog</a></li>
+  <li><a href="/">Cache</a></li>
+  <li><a href="https://github.com/brbcoding">{code}</a></li> 
+  <li><a href="/about">About</a></li>
+  <li><a href="https://twitter.com/CodyHenshaw">@me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+  
+    
+      <h1 class="entry-title">Faking a .gif With CSS Keyframes</h1>
+    
+  
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-17T16:31:31-05:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Animated gifs can be pretty impactful if used correctly. They can illustrate a point without having to embed a video or a wall of text. The issue with gifs is that they are just pictures. They can&rsquo;t be stopped or started (though many people fake it by swapping a static image). I ran across a question on Stack Overflow which asked for a solution to stop (by stop, I mean freeze and don&rsquo;t reset) a gif on <code>:hover</code> and resume on mouseout. JavaScript plugins were immediately suggested, which might be the correct solution to this problem&hellip; but let&rsquo;s try it with CSS animations anyway.</p>
+
+<p>The first thing we will need to do is break our .gif into frames. There are tons of tools online that allow you to do this, and I&rsquo;d even guess that ImageMagick will do it for you as well. Here&rsquo;s the one I chose to start with:</p>
+
+<p><img src="http://i.imgur.com/MxrP3DG.gif" alt="bananananana" /></p>
+
+<p>I broke mine into 8 individual frames. Here they are:</p>
+
+<p><img src="http://i.imgur.com/E2ee6fI.gif" alt="banana1" />
+<img src="http://i.imgur.com/JIi0uul.gif" alt="banana2" />
+<img src="http://i.imgur.com/owNGnNN.gif" alt="banana3" />
+<img src="http://i.imgur.com/2Ii6XOz.gif" alt="banana4" />
+<img src="http://i.imgur.com/ZmQBrQ5.gif" alt="banana5" />
+<img src="http://i.imgur.com/iAsfHyY.gif" alt="banana6" />
+<img src="http://i.imgur.com/AJwRblj.gif" alt="banana7" />
+<img src="http://i.imgur.com/fx5wUNY.gif" alt="banana8" /></p>
+
+<p>So, that&rsquo;s it for prep work&hellip; Let&rsquo;s get our html ready.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;faux-gif&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yep, that&rsquo;s it&hellip; Now, let&rsquo;s add one of the images as a <code>background-image</code>.</p>
+
+<div data-height="268" data-theme-id="2905" data-slug-hash="gqxEo" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif { 
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    
+    background-image: url(http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/gqxEo'>gqxEo</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>So, the cool part about this is that we are using <code>background-image</code>. The background image can be animated with keyframes. Therefore, we can use keyframes to <strong>change</strong> the url of the <code>background-image</code>! Just make sure to call the animation from within your <code>#faux-gif</code>&hellip; You can read more about keyframes on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">MDN Site</a>.</p>
+
+<p>A trivial example using just two images might be something like this. Note the `animation: giffy 0.5s infinite linear. That&rsquo;s how we make the animation actually run. 0.5s will be the duration of our animation called &ldquo;giffy&rdquo;, it will run indefinitely, and it will have a linear timing function (as opposed to ease, ease-in-out, etc&hellip;):</p>
+
+<div data-height="268" data-theme-id="2905" data-slug-hash="urHce" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    background-image: url(http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    animation: giffy 0.5s infinite linear;
+}
+
+
+@keyframes giffy {
+    from   { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif&#x27;); } 
+    to { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;fx5wUNY.gif&#x27;); }
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/urHce'>urHce</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>We have an almost-gif now&hellip; We just need to add the other frames. The cool part about keyframes is that you can use percentages instead of <code>to{ } ... from{ }</code>. Let&rsquo;s see how many we will need&hellip; We have 8 frames total, and 100% duration to work with. You may first think that you&rsquo;ll work in increments of 12.5%. That would be fine, but we haven&rsquo;t taken into account that our first frame is already taken care of with the initial state. That&rsquo;s the value we&rsquo;ll use at 0%. Instead, we&rsquo;ll want to do 100 / 7 (rounded to something simple to work with)&hellip; I&rsquo;ll just use 14.25%. Now, we&rsquo;ll create keyframes from 0% &ndash; ~100% in increments of 14.25%.</p>
+
+<div data-height="268" data-theme-id="2905" data-slug-hash="Kiumf" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+    background-image: url(http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    animation: giffy 0.5s infinite linear;
+}
+
+#faux-gif:hover {
+    animation-play-state:paused;
+}
+
+@keyframes giffy {
+    0%   { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif&#x27;); } 
+    14.25%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;JIi0uul.gif&#x27;); }
+    28.5%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;owNGnNN.gif&#x27;);}
+    42.75%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;2Ii6XOz.gif&#x27;); }
+    57%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;ZmQBrQ5.gif&#x27;); }
+    71.25%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;iAsfHyY.gif&#x27;); }
+    85.5%  { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;AJwRblj.gif&#x27;); }
+    99.75% { background-image: url(&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;fx5wUNY.gif&#x27;); }
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/Kiumf'>Kiumf</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>And that&rsquo;s about it. You can play with the animation timing, the duration, etc&hellip; You couldn&rsquo;t do that with your .gif, now could you? You&rsquo;ll see that I also added a <code>:hover</code> state. That was to satisfy the requirements of the Stack Overflow post I was solving with this technique. Thanks for checking it out, please let me know what mistakes I have made, and say hi <a href="https://twitter.com/CodyHenshaw">@CodyHenshaw</a> on twitter.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Cody G. Henshaw</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-17T16:31:31-05:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/css-animations/'>css animations</a>, <a class='category' href='/blog/categories/css3/'>css3</a>, <a class='category' href='/blog/categories/keyframes/'>keyframes</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://brbcoding.github.io/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/" data-via="CodyHenshaw" data-counturl="http://brbcoding.github.io/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/" title="Previous Post: CSS Variables in Firefox - AKA Variable Verbosity">&laquo; CSS Variables in Firefox - AKA Variable Verbosity</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/">Faking a .gif with CSS keyframes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/12/a-function-queue/">Shorthand Function Queues with JavaScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating loading spinners with pure CSS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: They were made for one another.</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/brbcoding">@brbcoding</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'brbcoding',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 -  Cody G. Henshaw <br/>
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> + <a href="https://github.com/ioveracker/mnml">mnml</a>.
+	  
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -9,7 +9,7 @@
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="Using icon fonts with pseudo-elements is ridiculously easy. Choosing between icon font sets will take a lot longer than the actual implementation. I& &hellip;">
+  <meta name="description" content="The HTML HTML is pretty minimal in this example&hellip; We can create the simplest of loading spinners with just one single DOM element. Here&rsquo;s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,233 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/05/creating-loading-spinners-with-pure-css-scss/">Creating Loading Spinners With Pure CSS</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T17:54:14-05:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>The HTML</h3>
+
+
+<hr />
+
+
+<br />
+
+
+<p>HTML is pretty minimal in this example&hellip; We can create the simplest of loading spinners with just one single DOM element. Here&rsquo;s how it looks:</p>
+
+<figure class='code'><figcaption><span>spinner.html</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;spinner&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&rsquo;s all the HTML we need to create our spinner.</p>
+
+<h3>The CSS</h3>
+
+
+<hr />
+
+
+<br />
+
+
+<h3>Creating the Shape</h3>
+
+
+<br />
+
+
+<figure class='code'><figcaption><span>spinner.css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.spinner</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">width</span><span class="o">:</span>  <span class="m">5em</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">height</span><span class="o">:</span> <span class="m">5em</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-top</span><span class="o">:</span>    <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-left</span><span class="o">:</span>   <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-right</span><span class="o">:</span>  <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-bottom</span><span class="o">:</span> <span class="m">0.75em</span> <span class="k">solid</span> <span class="nb">orange</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p>The width and the height are up to you. To make a circle, they need to be the same (obviously). I&rsquo;ll be using borders to create a &ldquo;donut&rdquo; shape. The border width can vary, but between 0.5 and 1 em seemed to look good here. Then, we round the (currently square) div by giving it a <code>border-radius</code> of 50%.</p>
+
+<h3>Animating the Shape</h3>
+
+
+<br />
+
+
+<p><strong>Disclaimer:</strong> Your mileage may vary on the vendor prefixes. I generally use compass w/ Sass or <a href="http://lea.verou.me/prefixfree/">Lea Verou&rsquo;s Prefix Free</a>, so most of these prefixes were looked up and not totally tested across all browsers.</p>
+
+<figure class='code'><figcaption><span>spinner.css</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nc">.spinner</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c">/* previous shape omitted */</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span> <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span>    <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
+</span><span class='line'>  <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">animation</span><span class="o">:</span>      <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">animation</span><span class="o">:</span>         <span class="n">spin</span> <span class="m">2s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@-webkit-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@-moz-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@-o-keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="o">-</span><span class="n">o</span><span class="o">-</span><span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">@keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="n">transform</span><span class="o">:</span> <span class="n">rotate</span><span class="p">(</span><span class="m">360</span><span class="n">deg</span><span class="p">);</span>   <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The spinning animation is actually very simple. Using <code>keyframes</code>, we can simply transform our shape 360 degrees in the amount of time specified in the <code>animation</code>. You can play with the different easing functions (<code>linear, ease, cubic-bezier(), ...</code>) and choose which animation you like best.</p>
+
+<h3>The Demo</h3>
+
+
+<h4>(May need a refresh to see spinning)</h4>
+
+
+<p data-height="268" data-theme-id="2905" data-slug-hash="Jpums" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/Jpums'>Jpums</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+
+
+<h3>Just for fun&#8230; No extra html, just the body element and pseudo-elements</h3>
+
+
+<h4>(May need a refresh to see spinning)</h4>
+
+
+<p>Keep in mind, this isn&rsquo;t very practical. You <em>could</em> add a class to the body and work off of that and make it slightly better, but you&rsquo;re probably better off just creating an element and hiding it until you need it.<br/>
+This demo uses prefix free as well as Sass (Scss syntax).</p>
+
+<figure class='code'><figcaption><span>spinner.scss &#8220;`</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nv">$gray</span><span class="o">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="mf">.75</span><span class="p">);</span>
+</span><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">&amp;</span><span class="nd">:after</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">content</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">height</span><span class="o">:</span> <span class="mi">5</span><span class="kt">em</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">top</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">right</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span> <span class="na">left</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">margin</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-top</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">rem</span> <span class="no">solid</span> <span class="nv">$gray</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-right</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.25</span><span class="kt">rem</span> <span class="no">solid</span> <span class="no">transparent</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-left</span><span class="o">:</span> <span class="mi">0</span><span class="mf">.5</span><span class="kt">rem</span> <span class="no">solid</span> <span class="nv">$gray</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">border-radius</span><span class="o">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">animation</span><span class="o">:</span> <span class="n">spin</span> <span class="mi">1</span><span class="mf">.5</span><span class="kt">s</span> <span class="n">infinite</span> <span class="n">linear</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">@keyframes</span> <span class="nt">spin</span> <span class="p">{</span>
+</span><span class='line'>   <span class="nt">100</span><span class="err">%</span> <span class="p">{</span> <span class="na">transform</span><span class="o">:</span> <span class="nf">rotate</span><span class="p">(</span><span class="mi">360</span><span class="kt">deg</span><span class="p">);</span> <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By using only 3 borders, we are able to create a different type of spinner. The <code>border-radius</code> again creates the rounded shape of the spinner. The <code>keyframes</code> just rotate the pseudo-element 360 degrees over the duration of the <code>animation</code>. With a <code>linear</code> easing function, we create a smooth spinning effect.</p>
+
+<p data-height="252" data-theme-id="2905" data-slug-hash="axyDz" data-user="brbcoding" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/brbcoding/pen/axyDz'>axyDz</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+
+
+<script async src="//codepen.io/assets/embed/ei.js"></script>
+
+
+<p>Now you should have an awesome spinner&hellip; Play around with different animations, directions, colors, etc&hellip; to make it your own. You can also use pseudo-elements to create multiple spinner shapes, positioned absolutely on top of one another. This can create a cool effect as well. That&rsquo;s beyond the scope of this post, but here&rsquo;s you can see this in action <a href="http://codepen.io/brbcoding/full/pLxgF">here</a>. Thanks for stopping by and feel free to say hi @CodyHenshaw.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -254,106 +481,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-  
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">Pinflickr - Some Kind of Wordpress Pinboard Plugin</a></h1>
-      
-      
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-05T15:09:27-04:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a paste of the Readme file located in the git repo. Full write-up coming soon.</p>
-
-
-
-
-<p><a href="https://github.com/brbcoding/pinflickr/tree/master/wp-pinflickr">Full Source on Github</a></p>
-
-
-
-
-<p>This plugin uses the Flickr API to build a pinboard style gallery on an existing Wordpress site.</p>
-
-
-
-
-<p>Examples:</p>
-
-
-
-
-<p><img src="http://i.imgur.com/DxAHfvp.jpg" alt="Screenshot 1" />
-<img src="http://i.imgur.com/vzB3ljs.jpg" alt="Screenshot 2" /></p>
-
-
-
-
-<h1>Installation</h1>
-
-
-
-
-<ul>
-<li>Move wp-pinflickr folder to the <code>plugins</code> directory of your Wordpress site.</li>
-<li>Create a new API code and app secret on flickr <a href="http://www.flickr.com/services/developer/api/">More Info</a></li>
-<li>Access <em>Pinflickr Settings</em> under the <em>Settings</em> menu inside the Wordpress Admin Menu.</li>
-<li>Enter your API code and App Secret from Flickr. Save these changes.</li>
-<li>Create a new page that will hold your gallery</li>
-<li>The plugin works with a shortcode to display the gallery. The format is as follows:</li>
-</ul>
-
-
-
-
-<p><code>[pinflickr user_id="66956608@N06" tags="tags,separated,by,commas"]</code></p>
-
-
-
-
-<p>The easiest way to find a user id is by using the site <a href="http://idgettr.com/">idGettr</a>.</p>
-
-
-
-
-<ul>
-<li>Enter the shortcode with your <code>user_id</code> and desired <code>tags</code> and save this page.</li>
-<li>That&rsquo;s it! You&rsquo;ve created an awesome pinboard styled gallery!</li>
-</ul>
-
-
-
-
-<p><em>Working Demo Coming Soon</em></p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -371,6 +498,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/">Faking a .gif with CSS keyframes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a>
       </li>
     
@@ -384,10 +515,6 @@
     
       <li class="post">
         <a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: They were made for one another.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a>
       </li>
     
   </ul>

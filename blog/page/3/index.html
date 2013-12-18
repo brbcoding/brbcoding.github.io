@@ -9,8 +9,7 @@
   <meta name="author" content="Cody G. Henshaw">
 
   
-  <meta name="description" content="Migrating this post from my old blog&hellip; These keybindings are still relevant though. General Files Ctrl + Shift + n &ndash; New Window
-Ctrl + &hellip;">
+  <meta name="description" content="I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,106 @@ Ctrl + &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+  
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/05/pinflickr-some-kind-of-wordpress-pinboard-plugin/">Pinflickr - Some Kind of Wordpress Pinboard Plugin</a></h1>
+      
+      
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-05T15:09:27-04:00" pubdate data-updated="true">Aug 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just completed the first version of my &ldquo;Pinflickr&rdquo; plugin which automatically generates a pinboard styled gallery. Below is a paste of the Readme file located in the git repo. Full write-up coming soon.</p>
+
+
+
+
+<p><a href="https://github.com/brbcoding/pinflickr/tree/master/wp-pinflickr">Full Source on Github</a></p>
+
+
+
+
+<p>This plugin uses the Flickr API to build a pinboard style gallery on an existing Wordpress site.</p>
+
+
+
+
+<p>Examples:</p>
+
+
+
+
+<p><img src="http://i.imgur.com/DxAHfvp.jpg" alt="Screenshot 1" />
+<img src="http://i.imgur.com/vzB3ljs.jpg" alt="Screenshot 2" /></p>
+
+
+
+
+<h1>Installation</h1>
+
+
+
+
+<ul>
+<li>Move wp-pinflickr folder to the <code>plugins</code> directory of your Wordpress site.</li>
+<li>Create a new API code and app secret on flickr <a href="http://www.flickr.com/services/developer/api/">More Info</a></li>
+<li>Access <em>Pinflickr Settings</em> under the <em>Settings</em> menu inside the Wordpress Admin Menu.</li>
+<li>Enter your API code and App Secret from Flickr. Save these changes.</li>
+<li>Create a new page that will hold your gallery</li>
+<li>The plugin works with a shortcode to display the gallery. The format is as follows:</li>
+</ul>
+
+
+
+
+<p><code>[pinflickr user_id="66956608@N06" tags="tags,separated,by,commas"]</code></p>
+
+
+
+
+<p>The easiest way to find a user id is by using the site <a href="http://idgettr.com/">idGettr</a>.</p>
+
+
+
+
+<ul>
+<li>Enter the shortcode with your <code>user_id</code> and desired <code>tags</code> and save this page.</li>
+<li>That&rsquo;s it! You&rsquo;ve created an awesome pinboard styled gallery!</li>
+</ul>
+
+
+
+
+<p><em>Working Demo Coming Soon</em></p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -180,6 +279,10 @@ Ctrl + &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/17/faux-animated-gifs-with-css3-keyframes/">Faking a .gif with CSS keyframes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/12/16/css-variables-in-firefox-aka-variable-verbosity/">CSS Variables in Firefox - AKA Variable Verbosity</a>
       </li>
     
@@ -193,10 +296,6 @@ Ctrl + &hellip;">
     
       <li class="post">
         <a href="/blog/2013/09/15/icon-fonts-and-pseudo-elements-a-love-story/">Icon fonts and pseudo-elements: They were made for one another.</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/08/creating-and-connecting-to-an-ec2-instance-on-amazon-aws/">Creating and connecting to an EC2 instance on Amazon AWS</a>
       </li>
     
   </ul>
