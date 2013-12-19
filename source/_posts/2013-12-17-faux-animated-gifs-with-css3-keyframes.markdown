@@ -105,4 +105,65 @@ We have an almost-gif now... We just need to add the other frames. The cool part
 
 And that's about it. You can play with the animation timing, the duration, etc... You couldn't do that with your .gif, now could you? You'll see that I also added a `:hover` state. That was to satisfy the requirements of the Stack Overflow post I was solving with this technique. Thanks for checking it out, please let me know what mistakes I have made, and say hi [@CodyHenshaw](https://twitter.com/CodyHenshaw) on twitter. 
 
+<h4>Update: December 9th</h4>
+So, I was testing this method, and it seems that it doesn't work in firefox. I wrote this quick n' dirty FauxGif "class" to take care of that. This doesn't demonstrate pre-loading of the images, which is something you will want to do if you don't want to see blank frames.  
 
+<div data-height="268" data-theme-id="2905" data-slug-hash="JhroI" data-user="brbcoding" data-default-tab="js" class='codepen'><pre><code>window.onload = function() {
+
+	function FauxGif(element, frames, speed) {
+		this.currentFrame = 0,
+		this.domElement   = element,
+		this.frames       = frames || null,
+		this.speed        = speed  || 200;
+		this.interval;
+		this.init();
+	}
+
+	FauxGif.prototype = {
+		init: function() {
+			&#x2F;&#x2F; set the first one to the first image
+			console.log(this.frames[0])
+			this.domElement.style.backgroundImage = &quot;url(&quot; + this.frames[0] + &quot;)&quot;;
+		},
+		pause: function() {
+			clearInterval(this.interval);
+		},
+		resume: function() {
+			var that = this;
+
+			that.interval = setInterval(function(){
+				console.log(that.frames[that.currentFrame])
+				console.log(that.frames.length);
+				that.currentFrame &lt; that.frames.length - 1 ? that.currentFrame++ : that.currentFrame = 0;
+				that.domElement.style.backgroundImage = &quot;url(&quot; + that.frames[that.currentFrame] + &quot;)&quot;;
+			}, 200);
+		}
+	}
+
+	var frames = [
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;E2ee6fI.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;JIi0uul.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;owNGnNN.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;2Ii6XOz.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;ZmQBrQ5.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;iAsfHyY.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;AJwRblj.gif&#x27;,
+					&#x27;http:&#x2F;&#x2F;i.imgur.com&#x2F;fx5wUNY.gif&#x27;
+				]
+
+	var elem = document.querySelector(&#x27;#faux-gif&#x27;),
+		gif  = new FauxGif(elem, frames);
+
+
+	elem.addEventListener(&#x27;mouseenter&#x27;, function(){
+		gif.resume()
+	});
+
+	elem.addEventListener(&#x27;mouseleave&#x27;, function() {
+		gif.pause();
+	});
+}</code></pre>
+<p>See the Pen <a href='http://codepen.io/brbcoding/pen/JhroI'>JhroI</a> by Cody Henshaw (<a href='http://codepen.io/brbcoding'>@brbcoding</a>) on <a href='http://codepen.io'>CodePen</a></p>
+</div><script async src="//codepen.io/assets/embed/ei.js"></script>
+
+Again, let me know if I have any issues. Thanks for stopping by.
