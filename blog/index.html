@@ -157,7 +157,7 @@
 
 <p>So, the cool part about this is that we are using <code>background-image</code>. The background image can be animated with keyframes. Therefore, we can use keyframes to change the url of the <code>background-image</code>! Just make sure to call the animation from within your <code>#faux-gif</code>&hellip; You can read more about keyframes on the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">MDN Site</a>.</p>
 
-<p>A trivial example using just two images might be something like this. Note the `animation: giffy 0.5s infinite linear. That&rsquo;s how we make the animation actually run. 0.5s will be the duration of our animation called &ldquo;giffy&rdquo;, it will run indefinitely, and it will have a linear timing function (as opposed to ease, ease-in-out, etc&hellip;):</p>
+<p>A trivial example using just two images might be something like this. Note the <code>animation: giffy 0.5s infinite linear</code>. That&rsquo;s how we make the animation actually run. 0.5s will be the duration of our animation called &ldquo;giffy&rdquo;, it will run indefinitely, and it we will use <del>a linear timing function (as opposed to ease, ease-in-out, etc&hellip;)</del> <code>steps(1)</code> because it makes the transition between slides much smoother (removes the fade-in/out effect):</p>
 
 <div data-height="268" data-theme-id="2905" data-slug-hash="urHce" data-user="brbcoding" data-default-tab="css" class='codepen'><pre><code>#faux-gif {
     position: absolute;
@@ -169,7 +169,7 @@
     background-position: center;
     width: 300px;
     height: 300px;
-    animation: giffy 0.5s infinite linear;
+    animation: giffy 0.5s infinite steps(1);
 }
 
 
@@ -196,7 +196,7 @@
     background-position: center;
     width: 300px;
     height: 300px;
-    animation: giffy 0.5s infinite linear;
+    animation: giffy 0.5s infinite steps(1);
 }
 
 #faux-gif:hover {
